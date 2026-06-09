@@ -4,6 +4,7 @@ import {
   Menu, X, Sun, Moon, ArrowRight, Mail, Phone, MapPin,
   Linkedin, Github, Facebook, Target, BarChart3, Search,
   Palette, Calendar, Send, TrendingUp, Sparkles, Briefcase,
+  Globe, Building2, Share2, ShieldCheck,
 } from "lucide-react";
 import profilePhoto from "@/assets/profile.jpg";
 
