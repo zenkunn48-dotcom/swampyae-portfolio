@@ -4,6 +4,7 @@ import {
   Menu, X, Sun, Moon, ArrowRight, Mail, Phone, MapPin,
   Linkedin, Github, Facebook, Target, BarChart3, Search,
   Palette, Calendar, Send, TrendingUp, Sparkles, Briefcase,
+  Globe, Building2, Share2, ShieldCheck,
 } from "lucide-react";
 import profilePhoto from "@/assets/profile.jpg";
 
@@ -31,6 +32,13 @@ const services = [
   { icon: Search, title: "Local SEO & Growth Automation", desc: "Google Business Profile optimization, CRM integration, lead-gen funnels via HubSpot/WordPress, marketing ops." },
   { icon: Palette, title: "Creative Direction & Content Strategy", desc: "Target-specific content calendars, brand positioning, graphic design oversight using Adobe Suite & Canva." },
   { icon: Calendar, title: "Event Marketing & Management", desc: "On-ground activation, corporate event planning, cross-departmental ops, and end-to-end lifecycle execution." },
+];
+
+const domains = [
+  { icon: Globe, title: "Digital Marketing Agency Ecosystem", desc: "Orchestrating media buying at scale across multiple client portfolios, managing cross-brand budgets, and leading multi-project delivery pipelines with precision." },
+  { icon: Building2, title: "Corporate Marketing Leadership", desc: "Directing full-lifecycle corporate strategies from ideation to execution, aligning cross-departmental operations and unifying brand vision across stakeholders." },
+  { icon: Share2, title: "Franchise & Network Operations", desc: "Specialized scaling for international education and franchise networks, localizing acquisition funnels and adapting global brand playbooks to regional markets." },
+  { icon: ShieldCheck, title: "Management & Brand Activation", desc: "Architecting cohesive brand identities, executing high-impact on-ground activations, safeguarding digital assets, and protecting IP across all channels." },
 ];
 
 const experience = [
@@ -183,6 +191,26 @@ function Portfolio() {
                 </div>
                 <h3 className="text-lg font-semibold">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Strategic Marketing Domains */}
+        <section id="domains" className="py-20">
+          <SectionHead eyebrow="Branding & Marketing" title="Strategic Marketing Domains" sub="Four core competencies that define my versatility across agency, corporate, franchise, and brand activation environments." />
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {domains.map((d) => (
+              <div
+                key={d.title}
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:bg-card hover:shadow-[0_20px_60px_-20px_color-mix(in_oklab,var(--primary)_20%,transparent)]"
+              >
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary transition-transform group-hover:scale-110">
+                  <d.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-semibold">{d.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
                 <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
               </div>
             ))}
