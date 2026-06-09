@@ -137,11 +137,23 @@ function Portfolio() {
                 Let's Connect
               </button>
             </div>
-            <div className="mt-10 grid max-w-md grid-cols-3 gap-4">
-              {[{n:"3+",l:"Years"},{n:"40+",l:"Campaigns"},{n:"371%",l:"Peak ROAS"}].map(s => (
-                <div key={s.l} className="rounded-xl border border-border bg-card/40 p-3">
-                  <div className="text-xl font-bold text-primary">{s.n}</div>
-                  <div className="text-xs text-muted-foreground">{s.l}</div>
+            <div className="mt-10 grid max-w-xl grid-cols-2 gap-4 sm:grid-cols-4">
+              {[
+                { n: "371.24%", l: "Maximum Actual ROAS (Google Ads)" },
+                { n: "15M+", l: "Ad Impressions Managed" },
+                { n: "45%+", l: "Average CPA Reduction" },
+                { n: "3+ Years", l: "Enterprise Marketing Experience" },
+              ].map((s) => (
+                <div
+                  key={s.l}
+                  className="flex flex-col items-center rounded-2xl border border-border bg-card/50 p-4 text-center transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_8px_30px_-12px_color-mix(in_oklab,var(--primary)_25%,transparent)]"
+                >
+                  <div className="bg-gradient-to-br from-primary via-[color-mix(in_oklab,var(--primary)_70%,var(--foreground))] to-foreground bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
+                    {s.n}
+                  </div>
+                  <div className="mt-2 text-[11px] font-medium uppercase leading-snug tracking-wide text-muted-foreground">
+                    {s.l}
+                  </div>
                 </div>
               ))}
             </div>
