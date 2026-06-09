@@ -197,6 +197,26 @@ function Portfolio() {
           </div>
         </section>
 
+        {/* Strategic Marketing Domains */}
+        <section id="domains" className="py-20">
+          <SectionHead eyebrow="Branding & Marketing" title="Strategic Marketing Domains" sub="Four core competencies that define my versatility across agency, corporate, franchise, and brand activation environments." />
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {domains.map((d) => (
+              <div
+                key={d.title}
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:bg-card hover:shadow-[0_20px_60px_-20px_color-mix(in_oklab,var(--primary)_20%,transparent)]"
+              >
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary transition-transform group-hover:scale-110">
+                  <d.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-semibold">{d.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
+                <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Experience */}
         <section id="experience" className="py-20">
           <SectionHead eyebrow="Career" title="Professional Journey" sub="A track record of compounding impact across agencies, e-commerce, education, and corporate brands." />
