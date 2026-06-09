@@ -34,6 +34,13 @@ const services = [
   { icon: Calendar, title: "Event Marketing & Management", desc: "On-ground activation, corporate event planning, cross-departmental ops, and end-to-end lifecycle execution." },
 ];
 
+const domains = [
+  { icon: Globe, title: "Digital Marketing Agency Ecosystem", desc: "Orchestrating media buying at scale across multiple client portfolios, managing cross-brand budgets, and leading multi-project delivery pipelines with precision." },
+  { icon: Building2, title: "Corporate Marketing Leadership", desc: "Directing full-lifecycle corporate strategies from ideation to execution, aligning cross-departmental operations and unifying brand vision across stakeholders." },
+  { icon: Share2, title: "Franchise & Network Operations", desc: "Specialized scaling for international education and franchise networks, localizing acquisition funnels and adapting global brand playbooks to regional markets." },
+  { icon: ShieldCheck, title: "Management & Brand Activation", desc: "Architecting cohesive brand identities, executing high-impact on-ground activations, safeguarding digital assets, and protecting IP across all channels." },
+];
+
 const experience = [
   { date: "Oct 2025 – Present", role: "Digital Marketing Senior Supervisor", company: "Grand Cherry Oo Co., Ltd.", desc: "Orchestrated strategic brand initiatives, handled end-to-end media buying, developed campaign proposals, and directed the corporate events lifecycle." },
   { date: "May 2025 – Sep 2025", role: "Social Media Executive", company: "Salt & Pixel Digital Marketing Agency", desc: "Media buying, cross-brand marketing strategy, copyright claims management, asset protection, and team monitoring." },
