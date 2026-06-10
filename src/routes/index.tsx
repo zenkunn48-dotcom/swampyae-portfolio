@@ -22,7 +22,6 @@ const nav = [
   { id: "about", label: "About Me" },
   { id: "services", label: "Services" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -50,18 +49,10 @@ const experience = [
   { date: "Feb 2023 – Aug 2023", role: "Content Writer", company: "Yaung Ni Mobile", desc: "Engaging tech content creation and copywriting across product launches and platform updates." },
 ];
 
-type Cat = "All" | "Meta Ads" | "Google Ads" | "Branding & Events";
-const projects: { title: string; desc: string; badge: Exclude<Cat, "All">; stat: string; statLabel: string }[] = [
-  { title: "High-Conversion Meta Ads", desc: "Optimized for Messages, Leads, and Video Plays. Achieved lower Cost Per Result while maximizing ROI across multiple verticals.", badge: "Meta Ads", stat: "↓ 42%", statLabel: "Cost Per Result" },
-  { title: "Google Ads Performance Max", desc: "Search, Display, and PMax setup focused on boosting Quality Score, lowering CPA, and scaling profitable conversions.", badge: "Google Ads", stat: "371%", statLabel: "Actual ROAS" },
-  { title: "Franchise Operations Marketing", desc: "Willtec Myanmar — Amplified brand footprint in the Myanmar–Japan education sector through integrated acquisition funnels.", badge: "Branding & Events", stat: "5×", statLabel: "Lead Growth" },
-  { title: "Corporate Brand Activation", desc: "Grand Cherry Oo Co., Ltd. — Multi-channel campaign proposals with cross-functional leadership across creative & ops.", badge: "Branding & Events", stat: "12+", statLabel: "Activations" },
-];
 
 function Portfolio() {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(true);
-  const [filter, setFilter] = useState<Cat>("All");
   const [sent, setSent] = useState(false);
 
   useEffect(() => {
@@ -79,8 +70,6 @@ function Portfolio() {
     setTimeout(() => setSent(false), 3000);
     (e.target as HTMLFormElement).reset();
   };
-
-  const filtered = filter === "All" ? projects : projects.filter(p => p.badge === filter);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -139,8 +128,8 @@ function Portfolio() {
               A results-driven Digital Marketing Senior Supervisor with over 3 years of experience orchestrating high-impact, multi-channel growth strategies. I specialize in driving brand visibility and maximizing ROI through data-backed decision-making, conversion optimization, and innovative content marketing.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <button onClick={() => scrollTo("projects")} className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90 hover:shadow-[0_10px_40px_-10px_var(--primary)]">
-                Explore Projects <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <button onClick={() => scrollTo("services")} className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90 hover:shadow-[0_10px_40px_-10px_var(--primary)]">
+                Explore Services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </button>
               <button onClick={() => scrollTo("contact")} className="inline-flex items-center gap-2 rounded-xl border border-border bg-transparent px-5 py-3 text-sm font-semibold transition-colors hover:bg-secondary">
                 Let's Connect
@@ -241,41 +230,6 @@ function Portfolio() {
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{e.desc}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Projects */}
-        <section id="projects" className="py-20">
-          <SectionHead eyebrow="Selected Work" title="Featured Campaigns & Case Studies" sub="Performance-driven campaigns engineered for measurable outcomes." />
-          <div className="mt-8 flex flex-wrap gap-2">
-            {(["All","Meta Ads","Google Ads","Branding & Events"] as Cat[]).map(c => (
-              <button
-                key={c}
-                onClick={() => setFilter(c)}
-                className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${
-                  filter === c
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {filtered.map(p => (
-              <div key={p.title} className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all hover:-translate-y-1 hover:border-primary/40">
-                <div className="flex items-start justify-between gap-4">
-                  <span className="rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">{p.badge}</span>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-emerald">{p.stat}</div>
-                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{p.statLabel}</div>
-                  </div>
-                </div>
-                <h3 className="mt-5 text-lg font-semibold">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
               </div>
             ))}
           </div>
