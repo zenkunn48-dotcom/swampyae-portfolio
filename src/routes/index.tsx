@@ -5,6 +5,7 @@ import {
   Linkedin, Github, Facebook, Target, BarChart3, Search,
   Palette, Calendar, Send, TrendingUp, Sparkles, Briefcase,
   Globe, Building2, Share2, ShieldCheck, Lightbulb, Settings,
+  Download,
 } from "lucide-react";
 import profilePhoto from "@/assets/profile.jpg";
 
@@ -87,6 +88,15 @@ function Portfolio() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
+            <a
+              href="https://drive.google.com/file/d/1rBP6F2nbiJbkwCwYaOrKrybPvViGM4kq/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90 hover:shadow-[0_10px_40px_-10px_var(--primary)] sm:inline-flex"
+            >
+              <Download className="h-4 w-4" />
+              Download Portfolio
+            </a>
             <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="rounded-full border border-border p-2 transition-colors hover:bg-secondary">
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
