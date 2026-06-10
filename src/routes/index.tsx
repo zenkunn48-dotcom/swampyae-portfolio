@@ -4,7 +4,7 @@ import {
   Menu, X, Sun, Moon, ArrowRight, Mail, Phone, MapPin,
   Linkedin, Github, Facebook, Target, BarChart3, Search,
   Palette, Calendar, Send, TrendingUp, Sparkles, Briefcase,
-  Globe, Building2, Share2, ShieldCheck,
+  Globe, Building2, Share2, ShieldCheck, Lightbulb, Settings,
 } from "lucide-react";
 import profilePhoto from "@/assets/profile.jpg";
 
@@ -27,11 +27,12 @@ const nav = [
 ];
 
 const services = [
-  { icon: Target, title: "Paid Ads Strategy & Media Buying", desc: "Meta Ads, Google Ads execution, custom audience analysis, pixel setup, UTM tracking, and real-time budget optimization." },
-  { icon: BarChart3, title: "Digital Strategy & Market Analytics", desc: "Market research, competitor trend analysis, psychographic segmentation, GA4 behavioral tracking, and Google Tag Manager." },
-  { icon: Search, title: "Local SEO & Growth Automation", desc: "Google Business Profile optimization, CRM integration, lead-gen funnels via HubSpot/WordPress, marketing ops." },
-  { icon: Palette, title: "Creative Direction & Content Strategy", desc: "Target-specific content calendars, brand positioning, graphic design oversight using Adobe Suite & Canva." },
-  { icon: Calendar, title: "Event Marketing & Management", desc: "On-ground activation, corporate event planning, cross-departmental ops, and end-to-end lifecycle execution." },
+  { icon: Lightbulb, title: "Digital Strategy", desc: "Formulating robust digital strategies based on in-depth market research and trend analysis. Expert in audience segmentation to ensure brand objectives align with long-term growth." },
+  { icon: Target, title: "Paid Ads Campaign", desc: "Executing high-impact campaigns across Meta Ads and Google Ads. Leveraging advanced audience analysis, UTM tracking, and real-time optimization to maximize ROI and data-backed performance." },
+  { icon: BarChart3, title: "Analytics & Local SEO", desc: "Managing global and local visibility through Google Business Profile management. Advanced tracking setup using Google Tag Manager, GA4 behavioral data, and custom CRM dashboard integrations." },
+  { icon: Settings, title: "Marketing Automation & CMS", desc: "Designing lead-generation funnels and integrating automation workflows via HubSpot and Zapier. Seamless web development, optimization, and content updates on WordPress." },
+  { icon: Palette, title: "Creative Direction & Content Strategy", desc: "Developing targeted content strategies, copywriting frameworks, and content calendars. Overseeing visual asset creation using Adobe Illustrator, Photoshop, and Canva." },
+  { icon: Calendar, title: "Event Marketing & Execution", desc: "Directing the operational lifecycle of corporate events, from strategic planning and coordination to on-site execution, ensuring perfect alignment with marketing objectives." },
 ];
 
 const domains = [
@@ -184,10 +185,13 @@ function Portfolio() {
         <section id="services" className="py-20">
           <SectionHead eyebrow="What I Do" title="Core Expertise & Services" sub="A full-stack marketing operator — from strategy and media buying to creative direction and event execution." />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {services.map(s => (
-              <div key={s.title} className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:bg-card">
-                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                  <s.icon className="h-5 w-5" />
+            {services.map((s) => (
+              <div
+                key={s.title}
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:bg-card hover:shadow-[0_20px_60px_-20px_color-mix(in_oklab,var(--primary)_20%,transparent)]"
+              >
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary transition-transform group-hover:scale-110">
+                  <s.icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-lg font-semibold">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
