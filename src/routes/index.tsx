@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import {
   Menu, X, Sun, Moon, ArrowRight, Mail, Phone, MapPin,
   Linkedin, Github, Facebook, Target, BarChart3, Search,
@@ -49,6 +49,73 @@ const experience = [
   { date: "Dec 2023 – Dec 2024", role: "Digital Marketing Staff", company: "Willtec Myanmar", desc: "Drove digital acquisition for education services, career consulting, and the Japanese Language School franchise marketing." },
   { date: "Feb 2023 – Aug 2023", role: "Content Writer", company: "Yaung Ni Mobile", desc: "Engaging tech content creation and copywriting across product launches and platform updates." },
 ];
+
+// ---------- Animation Helpers ----------
+function useInView<T extends HTMLElement>(opts: IntersectionObserverInit = { threshold: 0.2 }) {
+  const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setInView(true);
+        obs.disconnect();
+      }
+    }, opts);
+    obs.observe(el);
+    return () => obs.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return { ref, inView };
+}
+
+function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 0.7s ease-out ${delay}ms, transform 0.7s ease-out ${delay}ms`,
+        willChange: "opacity, transform",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function AnimatedCounter({ value, duration = 1800 }: { value: string; duration?: number }) {
+  const { ref, inView } = useInView<HTMLSpanElement>({ threshold: 0.4 });
+  const [display, setDisplay] = useState("0");
+
+  useEffect(() => {
+    if (!inView) return;
+    const match = value.match(/^([\d.]+)(.*)$/);
+    if (!match) { setDisplay(value); return; }
+    const target = parseFloat(match[1]);
+    const suffix = match[2];
+    const decimals = (match[1].split(".")[1] || "").length;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const current = target * eased;
+      setDisplay(current.toFixed(decimals) + suffix);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, value, duration]);
+
+  return <span ref={ref}>{display}</span>;
+}
+
+
 
 
 function Portfolio() {
@@ -129,7 +196,19 @@ function Portfolio() {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald" /> Available for Strategic Roles
             </span>
             <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-              Hello, I am <span className="font-bold">Aung Swam Pyae</span>
+              {["Hello,", "I", "am", "Aung", "Swam", "Pyae"].map((word, i) => (
+                <span
+                  key={i}
+                  className={`inline-block opacity-0 ${i >= 3 ? "font-bold bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent" : ""}`}
+                  style={{
+                    animation: `word-rise 0.7s ease-out forwards`,
+                    animationDelay: `${i * 120}ms`,
+                    marginRight: "0.3em",
+                  }}
+                >
+                  {word}
+                </span>
+              ))}
             </h1>
             <p className="mt-2 text-2xl font-semibold text-gradient sm:text-3xl">
               Digital Marketing Senior Supervisor
@@ -151,20 +230,20 @@ function Portfolio() {
                 { n: "15M+", l: "Ad Impressions Managed" },
                 { n: "45%+", l: "Average CPA Reduction" },
                 { n: "3+ Years", l: "Enterprise Marketing Experience" },
-              ].map((s) => (
-                <div
-                  key={s.l}
-                  className="flex flex-col items-center rounded-2xl border border-border bg-card/50 p-4 text-center transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_8px_30px_-12px_color-mix(in_oklab,var(--primary)_25%,transparent)]"
-                >
-                  <div className="bg-gradient-to-br from-primary via-[color-mix(in_oklab,var(--primary)_70%,var(--foreground))] to-foreground bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
-                    {s.n}
+              ].map((s, i) => (
+                <Reveal key={s.l} delay={i * 100}>
+                  <div className="flex flex-col items-center rounded-2xl border border-border bg-card/50 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-primary/50 hover:shadow-[0_8px_30px_-8px_color-mix(in_oklab,var(--primary)_40%,transparent)]">
+                    <div className="bg-gradient-to-br from-primary via-[color-mix(in_oklab,var(--primary)_70%,var(--foreground))] to-foreground bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
+                      <AnimatedCounter value={s.n} />
+                    </div>
+                    <div className="mt-2 text-[11px] font-medium uppercase leading-snug tracking-wide text-muted-foreground">
+                      {s.l}
+                    </div>
                   </div>
-                  <div className="mt-2 text-[11px] font-medium uppercase leading-snug tracking-wide text-muted-foreground">
-                    {s.l}
-                  </div>
-                </div>
+                </Reveal>
               ))}
             </div>
+
           </div>
           <div className="relative mx-auto">
             <div className="absolute inset-0 -z-10 rounded-full bg-primary/30 blur-3xl" />
@@ -184,18 +263,17 @@ function Portfolio() {
         <section id="services" className="py-20">
           <SectionHead eyebrow="What I Do" title="Core Expertise & Services" sub="A full-stack marketing operator — from strategy and media buying to creative direction and event execution." />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <div
-                key={s.title}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:bg-card hover:shadow-[0_20px_60px_-20px_color-mix(in_oklab,var(--primary)_20%,transparent)]"
-              >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary transition-transform group-hover:scale-110">
-                  <s.icon className="h-6 w-6" />
+            {services.map((s, i) => (
+              <Reveal key={s.title} delay={i * 90}>
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-primary/60 hover:bg-card hover:shadow-[0_0_0_1px_color-mix(in_oklab,var(--primary)_35%,transparent),0_20px_60px_-20px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                    <s.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                  <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
-                <h3 className="text-lg font-semibold">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-                <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
@@ -204,18 +282,17 @@ function Portfolio() {
         <section id="domains" className="py-20">
           <SectionHead eyebrow="Branding & Marketing" title="Strategic Marketing Domains" sub="Four core competencies that define my versatility across agency, corporate, franchise, and brand activation environments." />
           <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {domains.map((d) => (
-              <div
-                key={d.title}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:bg-card hover:shadow-[0_20px_60px_-20px_color-mix(in_oklab,var(--primary)_20%,transparent)]"
-              >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary transition-transform group-hover:scale-110">
-                  <d.icon className="h-6 w-6" />
+            {domains.map((d, i) => (
+              <Reveal key={d.title} delay={i * 110}>
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-primary/60 hover:bg-card hover:shadow-[0_0_0_1px_color-mix(in_oklab,var(--primary)_35%,transparent),0_20px_60px_-20px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                    <d.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold">{d.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
+                  <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
-                <h3 className="text-lg font-semibold">{d.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
-                <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>

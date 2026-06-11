@@ -110,3 +110,8 @@
   background-clip: text;
   color: transparent;
 }
+
+@keyframes word-rise {
+  0% { opacity: 0; transform: translateY(28px) rotateX(-25deg); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
+}
