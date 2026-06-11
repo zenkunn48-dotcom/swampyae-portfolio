@@ -129,7 +129,7 @@ function Portfolio() {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald" /> Available for Strategic Roles
             </span>
             <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-              Hi, I'm Aung Swam Pyae
+              Hello, I am <span className="font-bold">Aung Swam Pyae</span>
             </h1>
             <p className="mt-2 text-2xl font-semibold text-gradient sm:text-3xl">
               Digital Marketing Senior Supervisor
