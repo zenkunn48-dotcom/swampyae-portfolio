@@ -196,7 +196,19 @@ function Portfolio() {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald" /> Available for Strategic Roles
             </span>
             <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-              Hello, I am <span className="font-bold">Aung Swam Pyae</span>
+              {["Hello,", "I", "am", "Aung", "Swam", "Pyae"].map((word, i) => (
+                <span
+                  key={i}
+                  className={`inline-block opacity-0 ${i >= 3 ? "font-bold bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent" : ""}`}
+                  style={{
+                    animation: `word-rise 0.7s ease-out forwards`,
+                    animationDelay: `${i * 120}ms`,
+                    marginRight: "0.3em",
+                  }}
+                >
+                  {word}
+                </span>
+              ))}
             </h1>
             <p className="mt-2 text-2xl font-semibold text-gradient sm:text-3xl">
               Digital Marketing Senior Supervisor
@@ -218,20 +230,20 @@ function Portfolio() {
                 { n: "15M+", l: "Ad Impressions Managed" },
                 { n: "45%+", l: "Average CPA Reduction" },
                 { n: "3+ Years", l: "Enterprise Marketing Experience" },
-              ].map((s) => (
-                <div
-                  key={s.l}
-                  className="flex flex-col items-center rounded-2xl border border-border bg-card/50 p-4 text-center transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_8px_30px_-12px_color-mix(in_oklab,var(--primary)_25%,transparent)]"
-                >
-                  <div className="bg-gradient-to-br from-primary via-[color-mix(in_oklab,var(--primary)_70%,var(--foreground))] to-foreground bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
-                    {s.n}
+              ].map((s, i) => (
+                <Reveal key={s.l} delay={i * 100}>
+                  <div className="flex flex-col items-center rounded-2xl border border-border bg-card/50 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-primary/50 hover:shadow-[0_8px_30px_-8px_color-mix(in_oklab,var(--primary)_40%,transparent)]">
+                    <div className="bg-gradient-to-br from-primary via-[color-mix(in_oklab,var(--primary)_70%,var(--foreground))] to-foreground bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
+                      <AnimatedCounter value={s.n} />
+                    </div>
+                    <div className="mt-2 text-[11px] font-medium uppercase leading-snug tracking-wide text-muted-foreground">
+                      {s.l}
+                    </div>
                   </div>
-                  <div className="mt-2 text-[11px] font-medium uppercase leading-snug tracking-wide text-muted-foreground">
-                    {s.l}
-                  </div>
-                </div>
+                </Reveal>
               ))}
             </div>
+
           </div>
           <div className="relative mx-auto">
             <div className="absolute inset-0 -z-10 rounded-full bg-primary/30 blur-3xl" />
