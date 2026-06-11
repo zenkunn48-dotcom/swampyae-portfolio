@@ -282,18 +282,17 @@ function Portfolio() {
         <section id="domains" className="py-20">
           <SectionHead eyebrow="Branding & Marketing" title="Strategic Marketing Domains" sub="Four core competencies that define my versatility across agency, corporate, franchise, and brand activation environments." />
           <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {domains.map((d) => (
-              <div
-                key={d.title}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:bg-card hover:shadow-[0_20px_60px_-20px_color-mix(in_oklab,var(--primary)_20%,transparent)]"
-              >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary transition-transform group-hover:scale-110">
-                  <d.icon className="h-6 w-6" />
+            {domains.map((d, i) => (
+              <Reveal key={d.title} delay={i * 110}>
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/50 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-primary/60 hover:bg-card hover:shadow-[0_0_0_1px_color-mix(in_oklab,var(--primary)_35%,transparent),0_20px_60px_-20px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                    <d.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold">{d.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
+                  <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
-                <h3 className="text-lg font-semibold">{d.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
-                <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
