@@ -164,6 +164,15 @@ function Portfolio() {
               <Download className="h-4 w-4" />
               Download Portfolio
             </a>
+            <a
+              href="https://drive.google.com/file/d/1rBP6F2nbiJbkwCwYaOrKrybPvViGM4kq/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Portfolio"
+              className="inline-flex items-center justify-center rounded-xl bg-primary p-2.5 text-primary-foreground transition-all hover:opacity-90 hover:shadow-[0_10px_40px_-10px_var(--primary)] sm:hidden"
+            >
+              <Download className="h-4 w-4" />
+            </a>
             <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="rounded-full border border-border p-2 transition-colors hover:bg-secondary">
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
@@ -179,6 +188,15 @@ function Portfolio() {
                 {n.label}
               </button>
             ))}
+            <a
+              href="https://drive.google.com/file/d/1rBP6F2nbiJbkwCwYaOrKrybPvViGM4kq/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90"
+            >
+              <Download className="h-4 w-4" />
+              Download Portfolio
+            </a>
           </div>
         )}
       </header>
