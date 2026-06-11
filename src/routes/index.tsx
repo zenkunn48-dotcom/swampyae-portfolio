@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import {
   Menu, X, Sun, Moon, ArrowRight, Mail, Phone, MapPin,
   Linkedin, Github, Facebook, Target, BarChart3, Search,
