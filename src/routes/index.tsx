@@ -50,6 +50,73 @@ const experience = [
   { date: "Feb 2023 – Aug 2023", role: "Content Writer", company: "Yaung Ni Mobile", desc: "Engaging tech content creation and copywriting across product launches and platform updates." },
 ];
 
+// ---------- Animation Helpers ----------
+function useInView<T extends HTMLElement>(opts: IntersectionObserverInit = { threshold: 0.2 }) {
+  const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setInView(true);
+        obs.disconnect();
+      }
+    }, opts);
+    obs.observe(el);
+    return () => obs.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return { ref, inView };
+}
+
+function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 0.7s ease-out ${delay}ms, transform 0.7s ease-out ${delay}ms`,
+        willChange: "opacity, transform",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function AnimatedCounter({ value, duration = 1800 }: { value: string; duration?: number }) {
+  const { ref, inView } = useInView<HTMLSpanElement>({ threshold: 0.4 });
+  const [display, setDisplay] = useState("0");
+
+  useEffect(() => {
+    if (!inView) return;
+    const match = value.match(/^([\d.]+)(.*)$/);
+    if (!match) { setDisplay(value); return; }
+    const target = parseFloat(match[1]);
+    const suffix = match[2];
+    const decimals = (match[1].split(".")[1] || "").length;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const current = target * eased;
+      setDisplay(current.toFixed(decimals) + suffix);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, value, duration]);
+
+  return <span ref={ref}>{display}</span>;
+}
+
+
+
 
 function Portfolio() {
   const [open, setOpen] = useState(false);
