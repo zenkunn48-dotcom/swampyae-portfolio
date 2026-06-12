@@ -54,19 +54,25 @@ const experience = [
 function useInView<T extends HTMLElement>(opts: IntersectionObserverInit = { threshold: 0.2 }) {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
+  const hasTriggered = useRef(false);
+
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || hasTriggered.current) return;
+
     const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && !hasTriggered.current) {
+        hasTriggered.current = true;
         setInView(true);
         obs.disconnect();
       }
     }, opts);
+
     obs.observe(el);
     return () => obs.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return { ref, inView };
 }
 
