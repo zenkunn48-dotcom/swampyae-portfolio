@@ -54,18 +54,13 @@ const experience = [
 function useInView<T extends HTMLElement>(opts: IntersectionObserverInit = { threshold: 0.2 }) {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
-  const hasTriggered = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || hasTriggered.current) return;
+    if (!el) return;
 
     const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !hasTriggered.current) {
-        hasTriggered.current = true;
-        setInView(true);
-        obs.disconnect();
-      }
+      setInView(entry.isIntersecting);
     }, opts);
 
     obs.observe(el);
