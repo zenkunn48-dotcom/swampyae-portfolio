@@ -141,7 +141,7 @@ function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       {/* Header */}
       <header className="fixed inset-x-0 top-0 z-50">
         <div className="glass mx-auto mt-3 flex max-w-6xl items-center justify-between rounded-2xl px-5 py-3 sm:mx-4">
@@ -202,7 +202,7 @@ function Portfolio() {
         )}
       </header>
 
-      <main className="mx-auto max-w-6xl px-5 pt-32 sm:px-6">
+      <main className="mx-auto max-w-6xl overflow-x-hidden px-5 pt-32 sm:px-6">
         {/* Hero */}
         <section id="about" className="relative grid items-center gap-12 py-12 md:grid-cols-2 md:py-20">
           <div
