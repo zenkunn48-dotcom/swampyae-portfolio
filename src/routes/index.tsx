@@ -141,9 +141,25 @@ function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+      {/* Floating background blobs */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="animate-float-slow absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full opacity-40 blur-3xl"
+          style={{ background: "radial-gradient(closest-side, var(--violet), transparent)" }} />
+        <div className="animate-float-reverse absolute top-1/3 -right-40 h-[560px] w-[560px] rounded-full opacity-35 blur-3xl"
+          style={{ background: "radial-gradient(closest-side, var(--cyan), transparent)" }} />
+        <div className="animate-pulse-glow absolute bottom-0 left-1/4 h-[480px] w-[480px] rounded-full opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(closest-side, var(--violet), transparent)" }} />
+        <div className="animate-float-slow absolute top-2/3 right-1/3 h-[380px] w-[380px] rounded-full opacity-25 blur-3xl"
+          style={{ background: "radial-gradient(closest-side, var(--cyan), transparent)" }} />
+        {/* Subtle grid overlay */}
+        <div className="absolute inset-0 opacity-[0.04]"
+          style={{ backgroundImage: "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+      </div>
+
       {/* Header */}
       <header className="fixed inset-x-0 top-0 z-50">
+
         <div className="glass mx-auto mt-3 flex max-w-6xl items-center justify-between rounded-2xl px-5 py-3 sm:mx-4">
           <button onClick={() => scrollTo("about")} className="text-lg font-extrabold tracking-tight">
             ASP<span className="text-primary">.</span>
