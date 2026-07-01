@@ -284,17 +284,18 @@ function Portfolio() {
 
           </div>
           <div className="relative mx-auto">
-            <div className="absolute inset-0 -z-10 rounded-full bg-primary/30 blur-3xl" />
+            <div className="absolute inset-0 -z-10 animate-pulse-glow rounded-full bg-primary/40 blur-3xl" />
             <div className="glow-ring relative h-72 w-72 overflow-hidden rounded-full sm:h-96 sm:w-96">
               <img src={profilePhoto} alt="Aung Swam Pyae" className="h-full w-full object-cover" />
             </div>
-            <div className="glass absolute -bottom-4 -left-4 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm">
+            <div className="glass gradient-border absolute -bottom-4 -left-4 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm">
               <TrendingUp className="h-4 w-4 text-emerald" /> Data-Driven Growth
             </div>
-            <div className="glass absolute -right-4 top-6 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm">
-              <Sparkles className="h-4 w-4 text-primary" /> ROI Focused
+            <div className="glass gradient-border absolute -right-4 top-6 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm">
+              <Sparkles className="h-4 w-4" style={{ color: "var(--cyan)" }} /> ROI Focused
             </div>
           </div>
+
         </section>
 
         {/* Services */}
