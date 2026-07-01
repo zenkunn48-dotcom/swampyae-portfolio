@@ -160,9 +160,9 @@ function Portfolio() {
       {/* Header */}
       <header className="fixed inset-x-0 top-0 z-50">
 
-        <div className="glass mx-auto mt-3 flex max-w-6xl items-center justify-between rounded-2xl px-5 py-3 sm:mx-4">
+        <div className="glass gradient-border mx-auto mt-3 flex max-w-6xl items-center justify-between rounded-3xl px-5 py-3 sm:mx-4">
           <button onClick={() => scrollTo("about")} className="text-lg font-extrabold tracking-tight">
-            ASP<span className="text-primary">.</span>
+            ASP<span className="text-gradient">.</span>
           </button>
           <nav className="hidden items-center gap-7 md:flex">
             {nav.map(n => (
@@ -176,7 +176,7 @@ function Portfolio() {
               href="https://drive.google.com/file/d/1rBP6F2nbiJbkwCwYaOrKrybPvViGM4kq/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90 hover:shadow-[0_10px_40px_-10px_var(--primary)] sm:inline-flex"
+              className="btn-neon hidden items-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-semibold sm:inline-flex"
             >
               <Download className="h-4 w-4" />
               Download Portfolio
@@ -186,11 +186,11 @@ function Portfolio() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download Portfolio"
-              className="inline-flex items-center justify-center rounded-xl bg-primary p-2.5 text-primary-foreground transition-all hover:opacity-90 hover:shadow-[0_10px_40px_-10px_var(--primary)] sm:hidden"
+              className="btn-neon inline-flex items-center justify-center rounded-2xl p-2.5 sm:hidden"
             >
               <Download className="h-4 w-4" />
             </a>
-            <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="rounded-full border border-border p-2 transition-colors hover:bg-secondary">
+            <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="rounded-full border border-border p-2 transition-colors hover:bg-secondary hover:text-foreground">
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
             <button onClick={() => setOpen(o => !o)} className="rounded-full border border-border p-2 md:hidden" aria-label="Menu">
@@ -199,9 +199,9 @@ function Portfolio() {
           </div>
         </div>
         {open && (
-          <div className="glass mx-4 mt-2 rounded-2xl p-4 md:hidden">
+          <div className="glass gradient-border mx-4 mt-2 rounded-3xl p-4 md:hidden">
             {nav.map(n => (
-              <button key={n.id} onClick={() => scrollTo(n.id)} className="block w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-secondary">
+              <button key={n.id} onClick={() => scrollTo(n.id)} className="block w-full rounded-xl px-3 py-2 text-left text-sm hover:bg-secondary">
                 {n.label}
               </button>
             ))}
@@ -209,13 +209,14 @@ function Portfolio() {
               href="https://drive.google.com/file/d/1rBP6F2nbiJbkwCwYaOrKrybPvViGM4kq/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90"
+              className="btn-neon mt-3 flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold"
             >
               <Download className="h-4 w-4" />
               Download Portfolio
             </a>
           </div>
         )}
+
       </header>
 
       <main className="mx-auto max-w-6xl overflow-x-hidden px-5 pt-32 sm:px-6">
