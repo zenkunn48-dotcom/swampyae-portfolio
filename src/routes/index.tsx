@@ -435,8 +435,11 @@ function Portfolio() {
 function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub: string }) {
   return (
     <div className="max-w-2xl">
-      <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">{eyebrow}</div>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+      <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em]"
+        style={{ background: "color-mix(in oklab, var(--violet) 15%, transparent)", color: "var(--cyan)", border: "1px solid color-mix(in oklab, var(--cyan) 30%, transparent)" }}>
+        {eyebrow}
+      </div>
+      <h2 className="text-gradient mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
       <p className="mt-3 text-base text-muted-foreground">{sub}</p>
     </div>
   );
@@ -446,7 +449,8 @@ function Field({ label, name, type = "text" }: { label: string; name: string; ty
   return (
     <div>
       <label className="mb-1.5 block text-xs font-medium text-muted-foreground">{label}</label>
-      <input required name={name} type={type} className="w-full rounded-xl border border-input bg-background/60 px-4 py-3 text-sm outline-none transition-colors focus:border-primary" />
+      <input required name={name} type={type} className="w-full rounded-2xl border border-input bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary" />
     </div>
+
   );
 }
