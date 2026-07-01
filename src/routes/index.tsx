@@ -385,8 +385,9 @@ function Portfolio() {
                 { icon: Phone, label: "Phone", value: "09 755 158 687", href: "tel:+95755158687" },
                 { icon: MapPin, label: "Address", value: "Thiri Myaing 3rd Street, 13 Quarters, Hlaing Township, Yangon" },
               ].map(c => (
-                <a key={c.label} href={c.href} className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-5 transition-all hover:border-primary/40 hover:bg-card">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                <a key={c.label} href={c.href} className="glass gradient-border glow-hover flex items-start gap-4 rounded-3xl p-5 transition-transform hover:-translate-y-0.5">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-white"
+                    style={{ background: "linear-gradient(135deg, var(--violet), var(--cyan))" }}>
                     <c.icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -396,7 +397,7 @@ function Portfolio() {
                 </a>
               ))}
             </div>
-            <form onSubmit={onSubmit} className="glass space-y-4 rounded-2xl p-6 lg:col-span-3">
+            <form onSubmit={onSubmit} className="glass gradient-border space-y-4 rounded-3xl p-6 lg:col-span-3">
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="Full Name" name="name" />
                 <Field label="Email Address" name="email" type="email" />
@@ -404,12 +405,13 @@ function Portfolio() {
               <Field label="Subject" name="subject" />
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Message</label>
-                <textarea required rows={5} className="w-full resize-none rounded-xl border border-input bg-background/60 px-4 py-3 text-sm outline-none transition-colors focus:border-primary" />
+                <textarea required rows={5} className="w-full resize-none rounded-2xl border border-input bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary" />
               </div>
-              <button type="submit" className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:shadow-[0_10px_40px_-10px_var(--primary)]">
+              <button type="submit" className="btn-neon group inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
                 {sent ? "Message Sent ✓" : (<>Submit Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></>)}
               </button>
             </form>
+
           </div>
         </section>
 
