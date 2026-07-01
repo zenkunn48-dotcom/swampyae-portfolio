@@ -186,15 +186,16 @@
     0 0 0 1px color-mix(in oklab, var(--violet) 40%, transparent),
     0 10px 30px -10px color-mix(in oklab, var(--violet) 60%, transparent);
   transition: all 0.3s ease;
+  &:hover {
+    filter: brightness(1.1);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--cyan) 50%, transparent),
+      0 15px 50px -10px color-mix(in oklab, var(--violet) 80%, transparent),
+      0 20px 60px -20px color-mix(in oklab, var(--cyan) 60%, transparent);
+    transform: translateY(-1px);
+  }
 }
-@utility btn-neon:hover {
-  filter: brightness(1.1);
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--cyan) 50%, transparent),
-    0 15px 50px -10px color-mix(in oklab, var(--violet) 80%, transparent),
-    0 20px 60px -20px color-mix(in oklab, var(--cyan) 60%, transparent);
-  transform: translateY(-1px);
-}
+
 
 @keyframes word-rise {
   0% { opacity: 0; transform: translateY(28px) rotateX(-25deg); filter: blur(6px); }
