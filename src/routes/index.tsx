@@ -269,8 +269,8 @@ function Portfolio() {
                 { n: "3+ Years", l: "Enterprise Marketing Experience" },
               ].map((s, i) => (
                 <Reveal key={s.l} delay={i * 100}>
-                  <div className="flex flex-col items-center rounded-2xl border border-border bg-card/50 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-primary/50 hover:shadow-[0_8px_30px_-8px_color-mix(in_oklab,var(--primary)_40%,transparent)]">
-                    <div className="bg-gradient-to-br from-primary via-[color-mix(in_oklab,var(--primary)_70%,var(--foreground))] to-foreground bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
+                  <div className="glass gradient-border glow-hover flex h-full flex-col items-center rounded-3xl p-4 text-center transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.03]">
+                    <div className="text-gradient text-2xl font-extrabold tracking-tight sm:text-3xl">
                       <AnimatedCounter value={s.n} />
                     </div>
                     <div className="mt-2 text-[11px] font-medium uppercase leading-snug tracking-wide text-muted-foreground">
@@ -280,6 +280,7 @@ function Portfolio() {
                 </Reveal>
               ))}
             </div>
+
 
           </div>
           <div className="relative mx-auto">
