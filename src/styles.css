@@ -135,23 +135,23 @@
 
 @utility gradient-border {
   position: relative;
-}
-@utility gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg,
-    color-mix(in oklab, var(--violet) 70%, transparent),
-    color-mix(in oklab, var(--cyan) 60%, transparent) 50%,
-    transparent 100%);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  pointer-events: none;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--violet) 70%, transparent),
+      color-mix(in oklab, var(--cyan) 60%, transparent) 50%,
+      transparent 100%);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
 }
 
 @utility glow-ring {
@@ -163,13 +163,14 @@
 
 @utility glow-hover {
   transition: all 0.3s ease;
+  &:hover {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--violet) 50%, transparent),
+      0 10px 40px -10px color-mix(in oklab, var(--violet) 60%, transparent),
+      0 20px 60px -20px color-mix(in oklab, var(--cyan) 40%, transparent);
+  }
 }
-@utility glow-hover:hover {
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--violet) 50%, transparent),
-    0 10px 40px -10px color-mix(in oklab, var(--violet) 60%, transparent),
-    0 20px 60px -20px color-mix(in oklab, var(--cyan) 40%, transparent);
-}
+
 
 @utility text-gradient {
   background: linear-gradient(135deg, var(--foreground), var(--violet) 50%, var(--cyan));
