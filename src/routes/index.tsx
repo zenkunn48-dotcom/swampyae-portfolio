@@ -322,57 +322,73 @@ function Portfolio() {
         {/* Strategic Marketing Domains — Bento Grid */}
         <section id="domains" className="py-20">
           <SectionHead eyebrow="Branding & Marketing" title="Strategic Marketing Domains" sub="Four core competencies that define my versatility across agency, corporate, franchise, and brand activation environments." />
-          <div className="mt-10 grid auto-rows-[minmax(220px,auto)] gap-5 md:grid-cols-6">
-            {domains.map((d, i) => {
-              const spans = [
-                "md:col-span-4",
-                "md:col-span-2",
-                "md:col-span-2",
-                "md:col-span-4",
-              ];
-              return (
-                <Reveal key={d.title} delay={i * 110}>
-                  <div className={`glass gradient-border glow-hover group relative flex h-full flex-col overflow-hidden rounded-3xl p-7 transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.01] ${spans[i]}`}>
-                    <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
-                      style={{ background: "linear-gradient(135deg, var(--cyan), var(--violet))", boxShadow: "0 10px 30px -10px color-mix(in oklab, var(--cyan) 60%, transparent)" }}>
-                      <d.icon className="h-7 w-7" />
-                    </div>
-                    <h3 className="text-xl font-semibold">{d.title}</h3>
-                    <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
-                    <div className="pointer-events-none absolute -bottom-20 -right-10 h-56 w-56 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
-                      style={{ background: "radial-gradient(closest-side, var(--violet), transparent)" }} />
+          <div className="mt-10 flex flex-col gap-5">
+            {domains.map((d, i) => (
+              <Reveal key={d.title} delay={i * 110}>
+                <div className="glass gradient-border glow-hover group relative flex w-full flex-col gap-5 overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 sm:flex-row sm:items-center sm:gap-7 sm:p-8">
+                  <div className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+                    style={{ background: "linear-gradient(135deg, var(--cyan), var(--violet))", boxShadow: "0 10px 30px -10px color-mix(in oklab, var(--cyan) 60%, transparent)" }}>
+                    <d.icon className="h-8 w-8" />
                   </div>
-                </Reveal>
-              );
-            })}
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-xl font-semibold sm:text-2xl">{d.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">{d.desc}</p>
+                  </div>
+                  <div className="pointer-events-none absolute -right-16 -bottom-16 h-56 w-56 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
+                    style={{ background: "radial-gradient(closest-side, var(--violet), transparent)" }} />
+                </div>
+              </Reveal>
+            ))}
           </div>
         </section>
 
-        {/* Experience — Bento */}
+        {/* Experience — Vertical Timeline */}
         <section id="experience" className="py-20">
           <SectionHead eyebrow="Career" title="Professional Journey" sub="A track record of compounding impact across agencies, e-commerce, education, and corporate brands." />
-          <div className="mt-10 grid auto-rows-[minmax(180px,auto)] gap-5 md:grid-cols-6">
-            {experience.map((e, i) => {
-              const spans = ["md:col-span-4", "md:col-span-2", "md:col-span-3", "md:col-span-3", "md:col-span-2", "md:col-span-4"];
-              return (
+          <div className="relative mt-12">
+            {/* Vertical glowing neon line */}
+            <div
+              aria-hidden
+              className="absolute left-4 top-0 bottom-0 w-px sm:left-6"
+              style={{
+                background: "linear-gradient(to bottom, transparent, var(--violet), var(--cyan), var(--violet), transparent)",
+                boxShadow: "0 0 12px color-mix(in oklab, var(--violet) 70%, transparent), 0 0 24px color-mix(in oklab, var(--cyan) 40%, transparent)",
+              }}
+            />
+            <div className="flex flex-col gap-8">
+              {experience.map((e, i) => (
                 <Reveal key={i} delay={i * 90}>
-                  <div className={`glass gradient-border glow-hover group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 ${spans[i % spans.length]}`}>
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <h3 className="text-base font-semibold">{e.role}</h3>
-                      <span className="glass rounded-full px-3 py-0.5 text-xs text-muted-foreground">{e.date}</span>
+                  <div className="relative pl-12 sm:pl-16">
+                    {/* Timeline node */}
+                    <div
+                      aria-hidden
+                      className="absolute left-4 top-6 h-4 w-4 -translate-x-1/2 rounded-full sm:left-6"
+                      style={{
+                        background: "linear-gradient(135deg, var(--violet), var(--cyan))",
+                        boxShadow: "0 0 0 4px color-mix(in oklab, var(--background) 80%, transparent), 0 0 20px color-mix(in oklab, var(--violet) 80%, transparent), 0 0 40px color-mix(in oklab, var(--cyan) 60%, transparent)",
+                      }}
+                    />
+                    <div className="glass gradient-border glow-hover group relative w-full overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-7">
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <h3 className="text-lg font-semibold sm:text-xl">{e.role}</h3>
+                          <div className="mt-1.5 flex items-center gap-2 text-sm font-medium text-gradient">
+                            <Briefcase className="h-3.5 w-3.5 shrink-0" style={{ color: "var(--cyan)" }} /> {e.company}
+                          </div>
+                        </div>
+                        <span className="glass shrink-0 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground">{e.date}</span>
+                      </div>
+                      <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{e.desc}</p>
+                      <div className="pointer-events-none absolute -right-16 -bottom-16 h-40 w-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
+                        style={{ background: "radial-gradient(closest-side, var(--cyan), transparent)" }} />
                     </div>
-                    <div className="mt-1 flex items-center gap-2 text-sm text-gradient font-medium">
-                      <Briefcase className="h-3.5 w-3.5" style={{ color: "var(--cyan)" }} /> {e.company}
-                    </div>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{e.desc}</p>
-                    <div className="pointer-events-none absolute -right-16 -bottom-16 h-40 w-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
-                      style={{ background: "radial-gradient(closest-side, var(--cyan), transparent)" }} />
                   </div>
                 </Reveal>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </section>
+
 
 
         {/* Contact */}
