@@ -7,7 +7,7 @@ import {
   Globe, Building2, Share2, ShieldCheck, Lightbulb, Settings,
   Download,
 } from "lucide-react";
-import profileAsset from "@/assets/profile.jpg.asset.json";
+const profileAsset = { url: "/profile.jpg" };
 
 export const Route = createFileRoute("/")({
   head: () => ({
