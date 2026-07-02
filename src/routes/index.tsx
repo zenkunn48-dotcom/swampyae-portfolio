@@ -7,7 +7,7 @@ import {
   Globe, Building2, Share2, ShieldCheck, Lightbulb, Settings,
   Download,
 } from "lucide-react";
-import profilePhoto from "@/assets/profile.jpg";
+import profileAsset from "@/assets/profile.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -286,7 +286,14 @@ function Portfolio() {
           <div className="relative mx-auto">
             <div className="absolute inset-0 -z-10 animate-pulse-glow rounded-full bg-primary/40 blur-3xl" />
             <div className="glow-ring relative h-72 w-72 overflow-hidden rounded-full sm:h-96 sm:w-96">
-              <img src={profilePhoto} alt="Aung Swam Pyae" className="h-full w-full object-cover" />
+              <img
+                src={profileAsset.url}
+                alt="Aung Swam Pyae"
+                className="h-full w-full object-cover object-center"
+                style={{
+                  imageRendering: "-webkit-optimize-contrast",
+                }}
+              />
             </div>
             <div className="glass gradient-border absolute -bottom-4 -left-4 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm">
               <TrendingUp className="h-4 w-4 text-emerald" /> Data-Driven Growth
