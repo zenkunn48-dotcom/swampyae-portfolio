@@ -5,7 +5,8 @@ import {
   Linkedin, Github, Facebook, Target, BarChart3, Search,
   Palette, Calendar, Send, TrendingUp, Sparkles, Briefcase,
   Globe, Building2, Share2, ShieldCheck, Lightbulb, Settings,
-  Download,
+  Download, Megaphone, LineChart, PenTool, Music, Pin, Tags,
+  LayoutDashboard, Brush,
 } from "lucide-react";
 const profileAsset = { url: "/profile.jpg" };
 
