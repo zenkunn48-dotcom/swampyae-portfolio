@@ -34,6 +34,11 @@
   --color-surface: var(--surface);
   --color-cyan: var(--cyan);
   --color-violet: var(--violet);
+  --color-indigo: var(--indigo);
+  --color-blue: var(--blue);
+  --color-lime: var(--lime);
+  --color-amber: var(--amber);
+  --color-orange: var(--orange);
 }
 
 :root {
@@ -56,6 +61,11 @@
   /* Electric Cyan */
   --cyan: oklch(0.82 0.17 210);
   --violet: oklch(0.65 0.28 295);
+  --indigo: oklch(0.55 0.24 270);
+  --blue: oklch(0.65 0.2 240);
+  --lime: oklch(0.85 0.22 130);
+  --amber: oklch(0.78 0.18 70);
+  --orange: oklch(0.70 0.2 50);
   --accent: oklch(0.82 0.17 210);
   --accent-foreground: oklch(0.15 0.02 260);
   --destructive: oklch(0.65 0.22 25);
@@ -82,6 +92,11 @@
   --muted-foreground: oklch(0.42 0.02 260);
   --cyan: oklch(0.68 0.16 210);
   --violet: oklch(0.58 0.27 295);
+  --indigo: oklch(0.50 0.23 270);
+  --blue: oklch(0.58 0.19 240);
+  --lime: oklch(0.72 0.21 130);
+  --amber: oklch(0.72 0.17 70);
+  --orange: oklch(0.64 0.19 50);
   --accent: oklch(0.68 0.16 210);
   --accent-foreground: oklch(0.15 0.02 260);
   --border: oklch(0.18 0.02 260 / 12%);
