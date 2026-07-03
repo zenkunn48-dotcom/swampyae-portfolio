@@ -388,6 +388,48 @@ function Portfolio() {
           </div>
         </section>
 
+        {/* Marketing Tool Stack & Workflow */}
+        <section id="toolstack" className="py-20">
+          <SectionHead eyebrow="Tech Stack" title="Marketing Tool Stack & Workflow" sub="A battle-tested arsenal of advertising, analytics, and creative platforms that power high-performance campaigns." />
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {toolStack.map((cat, i) => (
+              <Reveal key={cat.title} delay={i * 100}>
+                <div className="glass gradient-border group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02]">
+                  <div
+                    className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+                    style={{
+                      background: `linear-gradient(135deg, ${cat.from}, ${cat.to})`,
+                      boxShadow: `0 10px 30px -10px color-mix(in oklab, ${cat.from} 60%, transparent)`,
+                    }}
+                  >
+                    <cat.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mb-4 text-lg font-semibold">{cat.title}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {cat.tools.map((t) => (
+                      <span
+                        key={t.label}
+                        className="group/badge relative inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary/50 px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 hover:border-transparent hover:bg-background/80"
+                      >
+                        <span
+                          className="pointer-events-none absolute inset-0 -z-10 rounded-full opacity-0 transition-opacity duration-300 group-hover/badge:opacity-100"
+                          style={{ boxShadow: `0 0 20px -5px ${cat.from}` }}
+                        />
+                        <t.icon className="h-3.5 w-3.5" style={{ color: cat.from }} />
+                        {t.label}
+                      </span>
+                    ))}
+                  </div>
+                  <div
+                    className="pointer-events-none absolute -right-16 -bottom-16 h-40 w-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
+                    style={{ background: `radial-gradient(closest-side, ${cat.from}, transparent)` }}
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
         {/* Experience — Vertical Timeline */}
         <section id="experience" className="py-20">
           <SectionHead eyebrow="Career" title="Professional Journey" sub="A track record of compounding impact across agencies, e-commerce, education, and corporate brands." />
