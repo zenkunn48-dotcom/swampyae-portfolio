@@ -176,19 +176,10 @@ function Portfolio() {
               href="https://drive.google.com/file/d/1rBP6F2nbiJbkwCwYaOrKrybPvViGM4kq/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-neon hidden items-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-semibold sm:inline-flex"
+              className="btn-neon inline-flex items-center gap-1.5 rounded-2xl px-3 py-2 text-xs font-semibold sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
             >
               <Download className="h-4 w-4" />
-              Download Portfolio
-            </a>
-            <a
-              href="https://drive.google.com/file/d/1rBP6F2nbiJbkwCwYaOrKrybPvViGM4kq/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Download Portfolio"
-              className="btn-neon inline-flex items-center justify-center rounded-2xl p-2.5 sm:hidden"
-            >
-              <Download className="h-4 w-4" />
+              <span className="whitespace-nowrap">Download Portfolio</span>
             </a>
             <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="rounded-full border border-border p-2 transition-colors hover:bg-secondary hover:text-foreground">
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
