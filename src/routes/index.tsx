@@ -397,7 +397,7 @@ function Portfolio() {
               {[
                 { icon: Mail, label: "Email", value: "aungswampyae3@gmail.com", href: "mailto:aungswampyae3@gmail.com" },
                 { icon: Phone, label: "Phone", value: "09 755 158 687", href: "tel:+95755158687" },
-                { icon: MapPin, label: "Address", value: "Thiri Myaing 3rd Street, 13 Quarters, Hlaing Township, Yangon" },
+                { icon: MapPin, label: "Address", value: "13 Quarters, Hlaing Township, Yangon" },
               ].map(c => (
                 <a key={c.label} href={c.href} className="glass gradient-border glow-hover flex items-start gap-4 rounded-3xl p-5 transition-transform hover:-translate-y-0.5">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-white"
