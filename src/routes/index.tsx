@@ -51,6 +51,53 @@ const experience = [
   { date: "Feb 2023 – Aug 2023", role: "Content Writer", company: "Yaung Ni Mobile", desc: "Engaging tech content creation and copywriting across product launches and platform updates." },
 ];
 
+const toolStack = [
+  {
+    icon: Megaphone,
+    title: "Media Buying & Paid Ads",
+    from: "var(--violet)",
+    to: "var(--cyan)",
+    tools: [
+      { icon: Facebook, label: "Meta Ads Manager" },
+      { icon: Music, label: "TikTok Ads Manager" },
+      { icon: Globe, label: "Google Ads" },
+      { icon: Pin, label: "Pinterest Ads" },
+    ],
+  },
+  {
+    icon: Globe,
+    title: "Google & Web Ecosystem",
+    from: "var(--blue)",
+    to: "var(--indigo)",
+    tools: [
+      { icon: Building2, label: "Google Business Manager" },
+      { icon: Tags, label: "Google Tag Manager" },
+      { icon: Search, label: "SEO (Search Engine Optimization)" },
+      { icon: LayoutDashboard, label: "WordPress" },
+    ],
+  },
+  {
+    icon: LineChart,
+    title: "Analytics & Reporting",
+    from: "var(--lime)",
+    to: "var(--emerald)",
+    tools: [
+      { icon: BarChart3, label: "Google Analytics (GA4)" },
+      { icon: TrendingUp, label: "Looker Studio" },
+    ],
+  },
+  {
+    icon: Palette,
+    title: "Creative Suite & Design",
+    from: "var(--amber)",
+    to: "var(--orange)",
+    tools: [
+      { icon: PenTool, label: "Adobe Photoshop" },
+      { icon: Brush, label: "Adobe Illustrator" },
+    ],
+  },
+];
+
 // ---------- Animation Helpers ----------
 function useInView<T extends HTMLElement>(opts: IntersectionObserverInit = { threshold: 0.2 }) {
   const ref = useRef<T | null>(null);
