@@ -302,9 +302,9 @@ function Portfolio() {
 
             <div className="mt-10 grid max-w-xl grid-cols-2 gap-4 sm:grid-cols-4">
               {[
-                { n: "371.24%", l: "Maximum Actual ROAS (Google Ads)" },
-                { n: "15M+", l: "Ad Impressions Managed" },
-                { n: "45%+", l: "Average CPA Reduction" },
+                { n: "500%", l: "Maximum Actual ROAS (Google Ads)" },
+                { n: "20M+", l: "Ad Impressions Managed" },
+                { n: "60%+", l: "Average CPA Reduction" },
                 { n: "3+ Years", l: "Enterprise Marketing Experience" },
               ].map((s, i) => (
                 <Reveal key={s.l} delay={i * 100}>
