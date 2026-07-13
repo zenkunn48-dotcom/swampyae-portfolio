@@ -6,7 +6,7 @@ import {
   Palette, Calendar, Send, TrendingUp, Sparkles, Briefcase,
   Globe, Building2, Share2, ShieldCheck, Lightbulb, Settings,
   Download, Megaphone, LineChart, PenTool, Music, Pin, Tags,
-  LayoutDashboard, Brush,
+  LayoutDashboard, Brush, Compass, MessageSquare, ShieldAlert,
 } from "lucide-react";
 const profileAsset = { url: "/profile.jpg" };
 
@@ -94,6 +94,17 @@ const toolStack = [
     tools: [
       { icon: PenTool, label: "Adobe Photoshop" },
       { icon: Brush, label: "Adobe Illustrator" },
+    ],
+  },
+  {
+    icon: Lightbulb,
+    title: "Brand Strategy & Positioning",
+    from: "var(--rose)",
+    to: "var(--coral)",
+    tools: [
+      { icon: Compass, label: "Digital Marketing Strategy" },
+      { icon: MessageSquare, label: "Content Tone & Voice" },
+      { icon: ShieldAlert, label: "Competitor Analysis" },
     ],
   },
 ];
@@ -391,7 +402,7 @@ function Portfolio() {
         {/* Marketing Tool Stack & Workflow */}
         <section id="toolstack" className="py-20">
           <SectionHead eyebrow="Tech Stack" title="Marketing Tool Stack & Workflow" sub="A battle-tested arsenal of advertising, analytics, and creative platforms that power high-performance campaigns." />
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {toolStack.map((cat, i) => (
               <Reveal key={cat.title} delay={i * 100}>
                 <div className="glass gradient-border group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02]">
