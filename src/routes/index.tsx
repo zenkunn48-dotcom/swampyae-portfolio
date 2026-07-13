@@ -263,7 +263,8 @@ function Portfolio() {
               className="btn-neon mt-3 flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold"
             >
               <Download className="h-4 w-4" />
-              Download Full Testimonial Portfolio
+              <span className="inline md:hidden">Download Portfolio</span>
+              <span className="hidden md:inline">Download Full Testimonial Portfolio</span>
             </a>
           </div>
         )}
