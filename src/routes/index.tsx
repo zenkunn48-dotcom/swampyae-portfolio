@@ -270,9 +270,9 @@ function Portfolio() {
 
       </header>
 
-      <main className="mx-auto max-w-6xl overflow-x-hidden px-5 pt-32 sm:px-6">
+      <main className="mx-auto max-w-6xl overflow-x-hidden px-5 pt-28 md:pt-32 sm:px-6">
         {/* Hero */}
-        <section id="about" className="relative grid items-center gap-12 py-12 md:grid-cols-2 md:py-20">
+        <section id="about" className="relative grid min-h-screen items-center gap-12 py-16 md:grid-cols-2 md:py-24">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-20 left-1/2 -z-10 h-[420px] w-[680px] -translate-x-1/2 rounded-full opacity-40 blur-3xl"
