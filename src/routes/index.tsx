@@ -219,7 +219,7 @@ function Portfolio() {
       {/* Header */}
       <header className="fixed inset-x-0 top-0 z-50">
 
-        <div className="glass gradient-border mx-auto mt-3 flex max-w-6xl items-center justify-between rounded-3xl px-5 py-3 sm:mx-4">
+        <div className="glass gradient-border mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-3xl px-6 py-3 md:px-16">
           <button onClick={() => scrollTo("about")} className="text-lg font-extrabold tracking-tight">
             ASP<span className="text-gradient">.</span>
           </button>
@@ -270,7 +270,7 @@ function Portfolio() {
 
       </header>
 
-      <main className="mx-auto max-w-6xl overflow-x-hidden px-5 pt-28 md:pt-32 sm:px-6">
+      <main className="mx-auto max-w-7xl overflow-x-hidden px-6 pt-28 md:px-16 md:pt-32">
         {/* Hero */}
         <section id="about" className="relative grid min-h-screen items-center gap-12 py-16 md:grid-cols-2 md:py-24">
           <div
