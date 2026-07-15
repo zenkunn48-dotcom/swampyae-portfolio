@@ -8,6 +8,7 @@ import {
   Download, Megaphone, LineChart, PenTool, Music, Pin, Tags,
   LayoutDashboard, Brush, Compass, MessageSquare, ShieldAlert,
 } from "lucide-react";
+import { Magnetic } from "@/components/Magnetic";
 const profileAsset = { url: "/profile.jpg" };
 
 export const Route = createFileRoute("/")({
@@ -233,16 +234,18 @@ function Portfolio() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <a
-              href="https://drive.google.com/file/d/1rBP6F2nbiJbkwCwYaOrKrybPvViGM4kq/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-neon inline-flex items-center gap-1.5 rounded-2xl px-3 py-1.5 text-[11px] font-semibold lg:px-4 lg:py-2 lg:text-xs"
-            >
-              <Download className="h-4 w-4" />
-              <span className="inline whitespace-nowrap xl:hidden">Download Portfolio</span>
-              <span className="hidden whitespace-nowrap xl:inline">Download Full Testimonial Portfolio</span>
-            </a>
+            <Magnetic strength={18}>
+              <a
+                href="https://drive.google.com/file/d/1rBP6F2nbiJbkwCwYaOrKrybPvViGM4kq/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-neon inline-flex items-center gap-1.5 rounded-2xl px-3 py-1.5 text-[11px] font-semibold lg:px-4 lg:py-2 lg:text-xs"
+              >
+                <Download className="h-4 w-4" />
+                <span className="inline whitespace-nowrap xl:hidden">Download Portfolio</span>
+                <span className="hidden whitespace-nowrap xl:inline">Download Full Testimonial Portfolio</span>
+              </a>
+            </Magnetic>
             <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="rounded-full border border-border p-2 transition-colors hover:bg-secondary hover:text-foreground">
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
@@ -306,12 +309,16 @@ function Portfolio() {
               A results-driven Digital Marketing Senior Supervisor with over 3 years of experience orchestrating high-impact, multi-channel growth strategies. I specialize in driving brand visibility and maximizing ROI through data-backed decision-making, conversion optimization, and innovative content marketing.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <button onClick={() => scrollTo("services")} className="btn-neon group inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
-                Explore Services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </button>
-              <button onClick={() => scrollTo("contact")} className="glass glow-hover inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
-                Let's Connect
-              </button>
+              <Magnetic strength={22}>
+                <button onClick={() => scrollTo("services")} className="btn-neon group inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
+                  Explore Services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </button>
+              </Magnetic>
+              <Magnetic strength={14}>
+                <button onClick={() => scrollTo("contact")} className="glass glow-hover inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
+                  Let's Connect
+                </button>
+              </Magnetic>
             </div>
 
             <div className="mt-10 grid max-w-xl grid-cols-2 gap-4 sm:grid-cols-4">
