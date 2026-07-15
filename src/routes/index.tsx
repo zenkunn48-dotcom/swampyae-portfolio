@@ -8,6 +8,7 @@ import {
   Download, Megaphone, LineChart, PenTool, Music, Pin, Tags,
   LayoutDashboard, Brush, Compass, MessageSquare, ShieldAlert,
 } from "lucide-react";
+import { Magnetic } from "@/components/Magnetic";
 const profileAsset = { url: "/profile.jpg" };
 
 export const Route = createFileRoute("/")({
