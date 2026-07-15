@@ -309,12 +309,16 @@ function Portfolio() {
               A results-driven Digital Marketing Senior Supervisor with over 3 years of experience orchestrating high-impact, multi-channel growth strategies. I specialize in driving brand visibility and maximizing ROI through data-backed decision-making, conversion optimization, and innovative content marketing.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <button onClick={() => scrollTo("services")} className="btn-neon group inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
-                Explore Services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </button>
-              <button onClick={() => scrollTo("contact")} className="glass glow-hover inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
-                Let's Connect
-              </button>
+              <Magnetic strength={22}>
+                <button onClick={() => scrollTo("services")} className="btn-neon group inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
+                  Explore Services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </button>
+              </Magnetic>
+              <Magnetic strength={14}>
+                <button onClick={() => scrollTo("contact")} className="glass glow-hover inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
+                  Let's Connect
+                </button>
+              </Magnetic>
             </div>
 
             <div className="mt-10 grid max-w-xl grid-cols-2 gap-4 sm:grid-cols-4">
