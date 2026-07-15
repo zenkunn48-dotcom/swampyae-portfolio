@@ -217,7 +217,9 @@ function Portfolio() {
       </div>
 
       {/* Header */}
-      <header className="fixed inset-x-0 top-0 z-50">
+      <header className="fixed inset-x-0 top-0 z-50 w-full">
+
+
 
         <div className="glass gradient-border mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-3xl px-6 py-3 md:px-16">
           <button onClick={() => scrollTo("about")} className="text-lg font-extrabold tracking-tight">
