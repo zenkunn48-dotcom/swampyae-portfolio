@@ -7,7 +7,7 @@ import {
   Globe, Building2, Share2, ShieldCheck, Lightbulb, Settings,
   Download, Megaphone, LineChart, PenTool, Music, Pin, Tags,
   LayoutDashboard, Brush, Compass, MessageSquare, ShieldAlert,
-  CheckCircle2, Star,
+  CheckCircle2,
 } from "lucide-react";
 import { Magnetic } from "@/components/Magnetic";
 import { EcosystemLoop } from "@/components/EcosystemLoop";
@@ -24,6 +24,12 @@ const brands = [
   { name: "One Step Myanmar", url: "/logos/one-step-myanmar.jpg" },
   { name: "NextGen - Garage Doors Solutions Melbourne", url: "/logos/nextgen-garage-doors.png" },
 ];
+
+const freelanceLogos = {
+  nextgen: "/logos/nextgen-freelance.png",
+  onestep: "/logos/one-step-freelance.jpg",
+  mhway: "/logos/mhway-freelance.jpg",
+} as const;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -128,6 +134,7 @@ const freelanceProjects = [
   {
     id: "nextgen-garage-doors",
     name: "NextGen Garage Doors Solutions",
+    logo: freelanceLogos.nextgen,
     location: "Melbourne, Australia",
     role: "Marketing & Media Buying Specialist",
     highlights: [
@@ -143,6 +150,7 @@ const freelanceProjects = [
   {
     id: "one-step-myanmar",
     name: "One Step Myanmar",
+    logo: freelanceLogos.onestep,
     location: "",
     role: "Digital Branding & Performance Marketing Strategist",
     highlights: [
@@ -158,6 +166,7 @@ const freelanceProjects = [
   {
     id: "mhway-myanmar",
     name: "Mhway Myanmar",
+    logo: freelanceLogos.mhway,
     location: "",
     role: "E-Commerce & Performance Meta Ads Specialist",
     highlights: [
@@ -236,6 +245,31 @@ function AnimatedCounter({ value, duration = 1800 }: { value: string; duration?:
   }, [inView, value, duration]);
 
   return <span ref={ref}>{display}</span>;
+}
+
+function FreelanceLogo({ name, src }: { name: string; src: string }) {
+  const [loaded, setLoaded] = useState(false);
+  const [failed, setFailed] = useState(false);
+
+  return (
+    <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border bg-background/70 p-1.5 shadow-[inset_0_1px_0_color-mix(in_oklab,var(--foreground)_10%,transparent),0_10px_30px_-12px_color-mix(in_oklab,var(--cyan)_45%,transparent)] backdrop-blur-xl transition-transform duration-300 group-hover:scale-110">
+      {(!loaded || failed) && (
+        <span className="text-gradient text-2xl font-extrabold" aria-hidden="true">
+          {name.charAt(0)}
+        </span>
+      )}
+      {!failed && (
+        <img
+          src={src}
+          alt={`${name} logo`}
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+          onError={() => setFailed(true)}
+          className={`absolute inset-1.5 h-[calc(100%-0.75rem)] w-[calc(100%-0.75rem)] rounded-xl bg-foreground object-contain transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+        />
+      )}
+    </div>
+  );
 }
 
 
@@ -605,10 +639,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
               <Reveal key={p.id} delay={i * 120}>
                 <div className="glass gradient-border glow-hover group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.02]">
                   <div className="flex items-start justify-between gap-3">
-                    <div className="idle-float inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110"
-                      style={{ background: `linear-gradient(135deg, ${p.from}, ${p.to})`, boxShadow: `0 10px 30px -10px color-mix(in oklab, ${p.from} 60%, transparent)`, animationDelay: `${i * 0.4}s` }}>
-                      <Star className="h-6 w-6" />
-                    </div>
+                    <FreelanceLogo name={p.name} src={p.logo} />
                     {p.location && (
                       <span className="inline-flex items-center gap-1 rounded-full border border-border bg-secondary/60 px-2.5 py-1 text-[10px] font-medium text-muted-foreground">
                         <MapPin className="h-3 w-3" /> {p.location}
