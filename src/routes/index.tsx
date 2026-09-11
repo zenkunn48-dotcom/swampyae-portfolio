@@ -252,7 +252,7 @@ function FreelanceLogo({ name, src }: { name: string; src: string }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border bg-background/70 p-1.5 shadow-[inset_0_1px_0_color-mix(in_oklab,var(--foreground)_10%,transparent),0_10px_30px_-12px_color-mix(in_oklab,var(--cyan)_45%,transparent)] backdrop-blur-xl transition-transform duration-300 group-hover:scale-110">
+    <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-1.5 shadow-2xl shadow-black/40 backdrop-blur-2xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:bg-white/[0.10] group-hover:border-white/25">
       {(!loaded || failed) && (
         <span className="text-gradient text-2xl font-extrabold" aria-hidden="true">
           {name.charAt(0)}
@@ -319,7 +319,7 @@ function Portfolio() {
 
 
 
-        <div className="glass gradient-border mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-3xl px-6 py-3 md:px-16">
+        <div className="glass gradient-border mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-3xl px-6 py-3 shadow-2xl shadow-black/40 md:px-16">
           <button onClick={() => scrollTo("about")} className="text-lg font-extrabold tracking-tight">
             ASP<span className="text-gradient">.</span>
           </button>
@@ -333,7 +333,7 @@ function Portfolio() {
           <div className="flex items-center gap-2">
             <Magnetic strength={18}>
               <a
-href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?usp=sharing"
+ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-neon inline-flex items-center gap-1.5 rounded-2xl px-3 py-1.5 text-[11px] font-semibold lg:px-4 lg:py-2 lg:text-xs"
@@ -343,18 +343,18 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                 <span className="hidden whitespace-nowrap xl:inline">Download Full Testimonial Portfolio</span>
               </a>
             </Magnetic>
-            <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="rounded-full border border-border p-2 transition-colors hover:bg-secondary hover:text-foreground">
+            <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="glass flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25">
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
-            <button onClick={() => setOpen(o => !o)} className="rounded-full border border-border p-2 md:hidden" aria-label="Menu">
+            <button onClick={() => setOpen(o => !o)} className="glass flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25 md:hidden" aria-label="Menu">
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
           </div>
         </div>
         {open && (
-          <div className="glass gradient-border mx-4 mt-2 rounded-3xl p-4 md:hidden">
+          <div className="glass gradient-border mx-4 mt-2 rounded-3xl p-4 shadow-2xl shadow-black/40 md:hidden">
             {nav.map(n => (
-              <button key={n.id} onClick={() => scrollTo(n.id)} className="block w-full rounded-xl px-3 py-2 text-left text-sm hover:bg-secondary">
+              <button key={n.id} onClick={() => scrollTo(n.id)} className="block w-full rounded-xl px-3 py-2 text-left text-sm transition-all duration-300 ease-out hover:bg-white/[0.07]">
                 {n.label}
               </button>
             ))}
@@ -381,7 +381,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
             style={{ background: "radial-gradient(closest-side, var(--primary), transparent)" }}
           />
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 py-1 text-xs font-medium text-muted-foreground">
+            <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/20">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald" /> Available for Management and Strategic Roles
             </span>
             <h1 className="mt-5 space-y-2 text-[clamp(1.625rem,7vw,2.5rem)] font-bold leading-snug tracking-tight sm:space-y-3 sm:text-5xl md:space-y-4">
@@ -444,7 +444,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                 </a>
               </Magnetic>
               <Magnetic strength={14}>
-                <button onClick={() => scrollTo("contact")} className="glass glow-hover inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
+                <button onClick={() => scrollTo("contact")} className="glass glow-hover inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   Let's Connect
                 </button>
               </Magnetic>
@@ -458,7 +458,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                 { n: "3+ Years", l: "Enterprise Marketing Experience" },
               ].map((s, i) => (
                 <Reveal key={s.l} delay={i * 100}>
-                  <div className="glass gradient-border idle-glow flex h-full flex-col items-center rounded-3xl p-4 text-center transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.03]" style={{ animationDelay: `${i * 0.5}s` }}>
+                  <div className="glass gradient-border idle-glow flex h-full flex-col items-center rounded-3xl p-4 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10" style={{ animationDelay: `${i * 0.5}s` }}>
                     <div className="text-gradient text-2xl font-extrabold tracking-tight sm:text-3xl">
                       <AnimatedCounter value={s.n} />
                     </div>
@@ -484,10 +484,10 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                 }}
               />
             </div>
-            <div className="glass gradient-border absolute -bottom-4 -left-4 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm">
+            <div className="glass gradient-border absolute -bottom-4 -left-4 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm shadow-2xl shadow-black/40 transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25">
               <TrendingUp className="h-4 w-4 text-emerald" /> Data-Driven Growth
             </div>
-            <div className="glass gradient-border absolute -right-4 top-6 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm">
+            <div className="glass gradient-border absolute -right-4 top-6 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm shadow-2xl shadow-black/40 transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25">
               <Sparkles className="h-4 w-4" style={{ color: "var(--cyan)" }} /> ROI Focused
             </div>
           </div>
@@ -507,7 +507,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.title} delay={i * 90}>
-                <div className="glass gradient-border glow-hover group relative h-full overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.02]">
+                <div className="glass gradient-border glow-hover group relative h-full overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   <div className="idle-float mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110"
                     style={{ background: "linear-gradient(135deg, var(--violet), var(--cyan))", boxShadow: "0 10px 30px -10px color-mix(in oklab, var(--violet) 60%, transparent)", animationDelay: `${i * 0.4}s` }}>
 
@@ -535,7 +535,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
           <div className="mt-10 flex flex-col gap-5">
             {domains.map((d, i) => (
               <Reveal key={d.title} delay={i * 110}>
-                <div className="glass gradient-border glow-hover group relative flex w-full flex-col gap-5 overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 sm:flex-row sm:items-center sm:gap-7 sm:p-8">
+                <div className="glass gradient-border glow-hover group relative flex w-full flex-col gap-5 overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10 sm:flex-row sm:items-center sm:gap-7 sm:p-8">
                   <div className="idle-breathe inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110"
                     style={{ background: "linear-gradient(135deg, var(--cyan), var(--violet))", boxShadow: "0 10px 30px -10px color-mix(in oklab, var(--cyan) 60%, transparent)", animationDelay: `${i * 0.6}s` }}>
 
@@ -559,7 +559,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
           <div className="mt-10 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {toolStack.map((cat, i) => (
               <Reveal key={cat.title} delay={i * 100}>
-                <div className="glass gradient-border group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02]">
+                <div className="glass gradient-border group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   <div
                     className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
                     style={{
@@ -574,7 +574,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                     {cat.tools.map((t, ti) => (
                       <span
                         key={t.label}
-                        className="group/badge relative inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary/50 px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 hover:border-transparent hover:bg-background/80"
+                        className="group/badge relative inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium backdrop-blur-xl transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 hover:bg-white/[0.08] hover:border-white/25 hover:shadow-cyan-500/10"
                       >
                         <span
                           className="pointer-events-none absolute inset-0 -z-10 rounded-full opacity-0 transition-opacity duration-300 group-hover/badge:opacity-100"
@@ -600,7 +600,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
         <section id="brands" className="py-16">
           <SectionHead eyebrow="Collaborations" title="Brands & Experience" sub="Brands and organizations I've driven growth for across agency, retail, education, and corporate sectors." />
           <Reveal>
-            <div className="glass-panel relative mt-10 overflow-hidden rounded-3xl py-8">
+            <div className="glass-panel relative mt-10 overflow-hidden rounded-3xl py-8 transition-all duration-300 ease-out hover:bg-white/[0.03]">
               <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
               <div className="marquee-track flex w-max items-center">
@@ -612,7 +612,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                           src={b.url}
                           alt={`${b.name} logo`}
                           loading="lazy"
-                          className="h-16 w-16 rounded-2xl object-contain p-1 opacity-80 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100 group-hover:shadow-[0_0_40px_-8px_color-mix(in_oklab,var(--violet)_70%,transparent)] sm:h-20 sm:w-20 md:h-24 md:w-24"
+                          className="h-16 w-16 rounded-2xl border border-white/10 bg-white/[0.04] object-contain p-1 opacity-80 shadow-lg shadow-black/30 backdrop-blur-xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:border-white/25 group-hover:bg-white/[0.08] group-hover:shadow-[0_0_40px_-8px_color-mix(in_oklab,var(--violet)_70%,transparent)] sm:h-20 sm:w-20 md:h-24 md:w-24"
                         />
                       </div>
                     ))}
@@ -637,11 +637,11 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {freelanceProjects.map((p, i) => (
               <Reveal key={p.id} delay={i * 120}>
-                <div className="glass gradient-border glow-hover group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.02]">
+                <div className="glass gradient-border glow-hover group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   <div className="flex items-start justify-between gap-3">
                     <FreelanceLogo name={p.name} src={p.logo} />
                     {p.location && (
-                      <span className="inline-flex items-center gap-1 rounded-full border border-border bg-secondary/60 px-2.5 py-1 text-[10px] font-medium text-muted-foreground">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[10px] font-medium text-muted-foreground backdrop-blur-xl transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25">
                         <MapPin className="h-3 w-3" /> {p.location}
                       </span>
                     )}
@@ -661,15 +661,11 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                     ))}
                   </ul>
 
-                  <div className="mt-6 flex flex-wrap gap-1.5 border-t border-border/60 pt-5">
+                  <div className="mt-6 flex flex-wrap gap-1.5 border-t border-white/10 pt-5">
                     {p.skills.map((s) => (
                       <span
                         key={s}
-                        className="rounded-full px-2.5 py-1 text-[11px] font-medium"
-                        style={{
-                          border: `1px solid color-mix(in oklab, ${p.from} 45%, transparent)`,
-                          background: `color-mix(in oklab, ${p.from} 12%, transparent)`,
-                        }}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium backdrop-blur-xl transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25"
                       >
                         {s}
                       </span>
@@ -703,8 +699,8 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                 { icon: Phone, label: "Phone", value: "09 755 158 687", href: "tel:+95755158687" },
                 { icon: MapPin, label: "Address", value: "13 Quarters, Hlaing Township, Yangon" },
               ].map(c => (
-                <a key={c.label} href={c.href} className="glass gradient-border glow-hover flex items-start gap-4 rounded-3xl p-5 transition-transform hover:-translate-y-0.5">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-white"
+                <a key={c.label} href={c.href} className="glass gradient-border glow-hover flex items-start gap-4 rounded-3xl p-5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-white shadow-lg shadow-black/30"
                     style={{ background: "linear-gradient(135deg, var(--violet), var(--cyan))" }}>
                     <c.icon className="h-5 w-5" />
                   </div>
@@ -715,7 +711,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                 </a>
               ))}
             </div>
-            <form onSubmit={onSubmit} className="glass gradient-border space-y-4 rounded-3xl p-6 lg:col-span-3">
+            <form onSubmit={onSubmit} className="glass gradient-border space-y-4 rounded-3xl p-6 shadow-2xl shadow-black/40 lg:col-span-3">
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="Full Name" name="name" />
                 <Field label="Email Address" name="email" type="email" />
@@ -723,7 +719,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
               <Field label="Subject" name="subject" />
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Message</label>
-                <textarea required rows={5} className="w-full resize-none rounded-2xl border border-input bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary" />
+                <textarea required rows={5} className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm outline-none backdrop-blur-xl transition-all duration-300 ease-out placeholder:text-muted-foreground focus:border-white/25 focus:bg-white/[0.07] focus:shadow-cyan-500/10" />
               </div>
               <button type="submit" className="btn-neon group inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
                 {sent ? "Message Sent ✓" : (<>Submit Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></>)}
@@ -738,7 +734,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
             <p className="text-sm text-muted-foreground">© 2026 Aung Swam Pyae. All rights reserved.</p>
             <div className="flex items-center gap-2">
               {[Linkedin, Github, Facebook].map((I, i) => (
-                <a key={i} href="#" className="rounded-full border border-border p-2 text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground">
+                <a key={i} href="#" className="glass flex h-9 w-9 items-center justify-center rounded-full border-white/10 text-muted-foreground transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25 hover:text-foreground hover:shadow-cyan-500/10">
                   <I className="h-4 w-4" />
                 </a>
               ))}
@@ -753,8 +749,7 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
 function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub: string }) {
   return (
     <div className="max-w-2xl">
-      <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em]"
-        style={{ background: "color-mix(in oklab, var(--violet) 15%, transparent)", color: "var(--cyan)", border: "1px solid color-mix(in oklab, var(--cyan) 30%, transparent)" }}>
+      <div className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25">
         {eyebrow}
       </div>
       <h2 className="text-gradient mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
@@ -767,7 +762,7 @@ function Field({ label, name, type = "text" }: { label: string; name: string; ty
   return (
     <div>
       <label className="mb-1.5 block text-xs font-medium text-muted-foreground">{label}</label>
-      <input required name={name} type={type} className="w-full rounded-2xl border border-input bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary" />
+      <input required name={name} type={type} className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm outline-none backdrop-blur-xl transition-all duration-300 ease-out placeholder:text-muted-foreground focus:border-white/25 focus:bg-white/[0.07] focus:shadow-cyan-500/10" />
     </div>
 
   );
