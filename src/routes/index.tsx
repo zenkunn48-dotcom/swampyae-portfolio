@@ -352,9 +352,9 @@ function Portfolio() {
           </div>
         </div>
         {open && (
-          <div className="glass gradient-border mx-4 mt-2 rounded-3xl p-4 md:hidden">
+          <div className="glass gradient-border mx-4 mt-2 rounded-3xl p-4 shadow-2xl shadow-black/40 md:hidden">
             {nav.map(n => (
-              <button key={n.id} onClick={() => scrollTo(n.id)} className="block w-full rounded-xl px-3 py-2 text-left text-sm hover:bg-secondary">
+              <button key={n.id} onClick={() => scrollTo(n.id)} className="block w-full rounded-xl px-3 py-2 text-left text-sm transition-all duration-300 ease-out hover:bg-white/[0.07]">
                 {n.label}
               </button>
             ))}
@@ -381,7 +381,7 @@ function Portfolio() {
             style={{ background: "radial-gradient(closest-side, var(--primary), transparent)" }}
           />
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 py-1 text-xs font-medium text-muted-foreground">
+            <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/20">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald" /> Available for Management and Strategic Roles
             </span>
             <h1 className="mt-5 space-y-2 text-[clamp(1.625rem,7vw,2.5rem)] font-bold leading-snug tracking-tight sm:space-y-3 sm:text-5xl md:space-y-4">
@@ -444,7 +444,7 @@ function Portfolio() {
                 </a>
               </Magnetic>
               <Magnetic strength={14}>
-                <button onClick={() => scrollTo("contact")} className="glass glow-hover inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
+                <button onClick={() => scrollTo("contact")} className="glass glow-hover inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   Let's Connect
                 </button>
               </Magnetic>
@@ -458,7 +458,7 @@ function Portfolio() {
                 { n: "3+ Years", l: "Enterprise Marketing Experience" },
               ].map((s, i) => (
                 <Reveal key={s.l} delay={i * 100}>
-                  <div className="glass gradient-border idle-glow flex h-full flex-col items-center rounded-3xl p-4 text-center transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.03]" style={{ animationDelay: `${i * 0.5}s` }}>
+                  <div className="glass gradient-border idle-glow flex h-full flex-col items-center rounded-3xl p-4 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10" style={{ animationDelay: `${i * 0.5}s` }}>
                     <div className="text-gradient text-2xl font-extrabold tracking-tight sm:text-3xl">
                       <AnimatedCounter value={s.n} />
                     </div>
