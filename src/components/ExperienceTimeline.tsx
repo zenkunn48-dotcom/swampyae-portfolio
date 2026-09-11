@@ -113,7 +113,7 @@ function SlideViewer({ item }: { item: ExperienceItem }) {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col gap-3">
-      <div className="glass relative flex min-h-[180px] flex-1 items-center justify-center overflow-hidden rounded-2xl">
+      <div className="glass relative flex min-h-[180px] flex-1 items-center justify-center overflow-hidden rounded-2xl transition-all duration-300 ease-out hover:bg-white/[0.05]">
         {total > 0 ? (
           <AnimatePresence mode="wait">
             <motion.img
@@ -149,7 +149,7 @@ function SlideViewer({ item }: { item: ExperienceItem }) {
               type="button"
               aria-label="Previous slide"
               onClick={() => go(-1)}
-              className="glass absolute left-2 top-1/2 -translate-y-1/2 rounded-full p-2 transition hover:scale-110"
+              className="glass absolute left-2 top-1/2 -translate-y-1/2 rounded-full border-white/15 p-2 transition-all duration-300 ease-out hover:scale-110 hover:bg-white/[0.10] hover:border-white/30"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -157,7 +157,7 @@ function SlideViewer({ item }: { item: ExperienceItem }) {
               type="button"
               aria-label="Next slide"
               onClick={() => go(1)}
-              className="glass absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 transition hover:scale-110"
+              className="glass absolute right-2 top-1/2 -translate-y-1/2 rounded-full border-white/15 p-2 transition-all duration-300 ease-out hover:scale-110 hover:bg-white/[0.10] hover:border-white/30"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -201,8 +201,7 @@ function SlidePopup({ item, onClose }: { item: ExperienceItem; onClose: () => vo
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
       <div
-        className="absolute inset-0 backdrop-blur-md"
-        style={{ background: "color-mix(in oklab, var(--background) 70%, transparent)" }}
+        className="absolute inset-0 bg-black/30 backdrop-blur-xl"
         onClick={onClose}
       />
       <motion.div
@@ -214,17 +213,17 @@ function SlidePopup({ item, onClose }: { item: ExperienceItem; onClose: () => vo
       >
         {/* Sticky header bar */}
         <div
-          className="flex flex-none items-start justify-between gap-3 px-4 pt-4 pb-3 sm:px-6 sm:pt-6 sm:pb-4"
-          style={{ borderBottom: "1px solid color-mix(in oklab, var(--border) 40%, transparent)" }}
+          className="flex flex-none items-start justify-between gap-3 border-b border-white/10 px-4 pt-4 pb-3 sm:px-6 sm:pt-6 sm:pb-4"
+          style={{ background: "color-mix(in oklab, var(--card) 25%, transparent)" }}
         >
           <div className="min-w-0 pr-3">
             <h3 className="text-base font-semibold sm:text-xl">{item.role}</h3>
             <p className="mt-1 text-sm font-medium text-gradient">{item.company}</p>
           </div>
           <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
-            <span className="glass rounded-full px-3 py-1 text-[11px] font-medium text-muted-foreground">{item.date}</span>
+            <span className="glass rounded-full px-3 py-1 text-[11px] font-medium text-muted-foreground transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25">{item.date}</span>
             <span
-              className="rounded-full px-3 py-1 text-[11px] font-semibold"
+              className="rounded-full px-3 py-1 text-[11px] font-semibold shadow-lg shadow-black/30"
               style={{
                 background: "linear-gradient(135deg, var(--violet), var(--cyan))",
                 color: "var(--primary-foreground)",
@@ -236,7 +235,7 @@ function SlidePopup({ item, onClose }: { item: ExperienceItem; onClose: () => vo
               type="button"
               aria-label="Close portfolio preview"
               onClick={onClose}
-              className="glass flex h-10 w-10 items-center justify-center rounded-full transition hover:scale-110 sm:h-9 sm:w-9"
+              className="glass flex h-10 w-10 items-center justify-center rounded-full border-white/15 transition-all duration-300 ease-out hover:scale-110 hover:bg-white/[0.10] hover:border-white/30 sm:h-9 sm:w-9"
             >
               <X className="h-5 w-5 sm:h-4 sm:w-4" />
             </button>
@@ -247,7 +246,7 @@ function SlidePopup({ item, onClose }: { item: ExperienceItem; onClose: () => vo
           <SlideViewer item={item} />
 
           {/* Quick context sidebar */}
-          <aside className="glass flex flex-col gap-4 rounded-2xl p-4">
+          <aside className="glass flex flex-col gap-4 rounded-2xl p-4 transition-all duration-300 ease-out hover:bg-white/[0.05]">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Impact</p>
               <ul className="mt-2 space-y-1.5">
@@ -273,11 +272,7 @@ function SlidePopup({ item, onClose }: { item: ExperienceItem; onClose: () => vo
                 {item.skills.map((s) => (
                   <span
                     key={s}
-                    className="rounded-full px-2.5 py-1 text-[11px] font-medium"
-                    style={{
-                      border: "1px solid color-mix(in oklab, var(--violet) 45%, transparent)",
-                      background: "color-mix(in oklab, var(--violet) 12%, transparent)",
-                    }}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium backdrop-blur-xl transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25"
                   >
                     {s}
                   </span>
@@ -349,7 +344,7 @@ export function ExperienceTimeline() {
                 onClick={() => hasSlides && open(e.id)}
                 whileHover={hasSlides ? { y: -4 } : undefined}
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className={`glass gradient-border group relative w-full overflow-hidden rounded-3xl p-6 text-left sm:p-7 ${hasSlides ? "glow-hover cursor-pointer" : "cursor-default"} ${primary ? "glow-ring" : ""}`}
+                className={`glass gradient-border group relative w-full overflow-hidden rounded-3xl p-6 text-left transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25 sm:p-7 ${hasSlides ? "glow-hover cursor-pointer" : "cursor-default"} ${primary ? "glow-ring" : ""}`}
               >
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0">
@@ -371,7 +366,7 @@ export function ExperienceTimeline() {
                       <Briefcase className="h-3.5 w-3.5 shrink-0" style={{ color: "var(--cyan)" }} /> {e.company}
                     </div>
                   </div>
-                  <span className="glass shrink-0 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground">{e.date}</span>
+                  <span className="glass shrink-0 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25">{e.date}</span>
                 </div>
 
                 <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ color: "var(--cyan)" }}>
