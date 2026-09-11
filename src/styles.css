@@ -133,25 +133,23 @@
 }
 
 @utility glass {
-  background: color-mix(in oklab, var(--card) 45%, transparent);
-  backdrop-filter: blur(22px) saturate(160%);
-  border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+  background: color-mix(in oklab, var(--card) 28%, rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(26px) saturate(180%);
+  border: 1px solid color-mix(in oklab, var(--foreground) 11%, transparent);
   box-shadow:
-    inset 0 1px 0 0 color-mix(in oklab, var(--foreground) 8%, transparent),
-    0 10px 40px -20px color-mix(in oklab, var(--violet) 40%, transparent);
+    inset 0 1px 0 0 color-mix(in oklab, var(--foreground) 9%, transparent),
+    0 24px 60px -16px color-mix(in oklab, black 36%, transparent);
 }
 
 @utility glass-panel {
   position: relative;
-  background: linear-gradient(140deg,
-    color-mix(in oklab, var(--card) 60%, transparent),
-    color-mix(in oklab, var(--card) 30%, transparent));
-  backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid transparent;
+  background: color-mix(in oklab, var(--card) 30%, rgba(255, 255, 255, 0.04));
+  backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid color-mix(in oklab, var(--foreground) 11%, transparent);
   background-clip: padding-box;
   box-shadow:
-    inset 0 1px 0 0 color-mix(in oklab, var(--foreground) 8%, transparent),
-    0 20px 60px -30px color-mix(in oklab, var(--violet) 50%, transparent);
+    inset 0 1px 0 0 color-mix(in oklab, var(--foreground) 9%, transparent),
+    0 28px 70px -18px color-mix(in oklab, black 40%, transparent);
 }
 
 @utility gradient-border {
