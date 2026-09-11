@@ -319,7 +319,7 @@ function Portfolio() {
 
 
 
-        <div className="glass gradient-border mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-3xl px-6 py-3 md:px-16">
+        <div className="glass gradient-border mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-3xl px-6 py-3 shadow-2xl shadow-black/40 md:px-16">
           <button onClick={() => scrollTo("about")} className="text-lg font-extrabold tracking-tight">
             ASP<span className="text-gradient">.</span>
           </button>
@@ -333,7 +333,7 @@ function Portfolio() {
           <div className="flex items-center gap-2">
             <Magnetic strength={18}>
               <a
-href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?usp=sharing"
+ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-neon inline-flex items-center gap-1.5 rounded-2xl px-3 py-1.5 text-[11px] font-semibold lg:px-4 lg:py-2 lg:text-xs"
@@ -343,10 +343,10 @@ href="https://drive.google.com/drive/folders/1hbJ5HUWvG40tVizofBPtg48j5oOUIppD?u
                 <span className="hidden whitespace-nowrap xl:inline">Download Full Testimonial Portfolio</span>
               </a>
             </Magnetic>
-            <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="rounded-full border border-border p-2 transition-colors hover:bg-secondary hover:text-foreground">
+            <button onClick={() => setDark(d => !d)} aria-label="Toggle theme" className="glass flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25">
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
-            <button onClick={() => setOpen(o => !o)} className="rounded-full border border-border p-2 md:hidden" aria-label="Menu">
+            <button onClick={() => setOpen(o => !o)} className="glass flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25 md:hidden" aria-label="Menu">
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
           </div>
