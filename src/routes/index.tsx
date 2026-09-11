@@ -484,10 +484,10 @@ function Portfolio() {
                 }}
               />
             </div>
-            <div className="glass gradient-border absolute -bottom-4 -left-4 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm">
+            <div className="glass gradient-border absolute -bottom-4 -left-4 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm shadow-2xl shadow-black/40 transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25">
               <TrendingUp className="h-4 w-4 text-emerald" /> Data-Driven Growth
             </div>
-            <div className="glass gradient-border absolute -right-4 top-6 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm">
+            <div className="glass gradient-border absolute -right-4 top-6 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm shadow-2xl shadow-black/40 transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25">
               <Sparkles className="h-4 w-4" style={{ color: "var(--cyan)" }} /> ROI Focused
             </div>
           </div>
@@ -507,7 +507,7 @@ function Portfolio() {
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.title} delay={i * 90}>
-                <div className="glass gradient-border glow-hover group relative h-full overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.02]">
+                <div className="glass gradient-border glow-hover group relative h-full overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   <div className="idle-float mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110"
                     style={{ background: "linear-gradient(135deg, var(--violet), var(--cyan))", boxShadow: "0 10px 30px -10px color-mix(in oklab, var(--violet) 60%, transparent)", animationDelay: `${i * 0.4}s` }}>
 
@@ -535,7 +535,7 @@ function Portfolio() {
           <div className="mt-10 flex flex-col gap-5">
             {domains.map((d, i) => (
               <Reveal key={d.title} delay={i * 110}>
-                <div className="glass gradient-border glow-hover group relative flex w-full flex-col gap-5 overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 sm:flex-row sm:items-center sm:gap-7 sm:p-8">
+                <div className="glass gradient-border glow-hover group relative flex w-full flex-col gap-5 overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10 sm:flex-row sm:items-center sm:gap-7 sm:p-8">
                   <div className="idle-breathe inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110"
                     style={{ background: "linear-gradient(135deg, var(--cyan), var(--violet))", boxShadow: "0 10px 30px -10px color-mix(in oklab, var(--cyan) 60%, transparent)", animationDelay: `${i * 0.6}s` }}>
 
