@@ -641,7 +641,7 @@ function Portfolio() {
                   <div className="flex items-start justify-between gap-3">
                     <FreelanceLogo name={p.name} src={p.logo} />
                     {p.location && (
-                      <span className="inline-flex items-center gap-1 rounded-full border border-border bg-secondary/60 px-2.5 py-1 text-[10px] font-medium text-muted-foreground">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[10px] font-medium text-muted-foreground backdrop-blur-xl transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25">
                         <MapPin className="h-3 w-3" /> {p.location}
                       </span>
                     )}
@@ -661,15 +661,11 @@ function Portfolio() {
                     ))}
                   </ul>
 
-                  <div className="mt-6 flex flex-wrap gap-1.5 border-t border-border/60 pt-5">
+                  <div className="mt-6 flex flex-wrap gap-1.5 border-t border-white/10 pt-5">
                     {p.skills.map((s) => (
                       <span
                         key={s}
-                        className="rounded-full px-2.5 py-1 text-[11px] font-medium"
-                        style={{
-                          border: `1px solid color-mix(in oklab, ${p.from} 45%, transparent)`,
-                          background: `color-mix(in oklab, ${p.from} 12%, transparent)`,
-                        }}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium backdrop-blur-xl transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25"
                       >
                         {s}
                       </span>
@@ -703,8 +699,8 @@ function Portfolio() {
                 { icon: Phone, label: "Phone", value: "09 755 158 687", href: "tel:+95755158687" },
                 { icon: MapPin, label: "Address", value: "13 Quarters, Hlaing Township, Yangon" },
               ].map(c => (
-                <a key={c.label} href={c.href} className="glass gradient-border glow-hover flex items-start gap-4 rounded-3xl p-5 transition-transform hover:-translate-y-0.5">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-white"
+                <a key={c.label} href={c.href} className="glass gradient-border glow-hover flex items-start gap-4 rounded-3xl p-5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-white shadow-lg shadow-black/30"
                     style={{ background: "linear-gradient(135deg, var(--violet), var(--cyan))" }}>
                     <c.icon className="h-5 w-5" />
                   </div>
@@ -715,7 +711,7 @@ function Portfolio() {
                 </a>
               ))}
             </div>
-            <form onSubmit={onSubmit} className="glass gradient-border space-y-4 rounded-3xl p-6 lg:col-span-3">
+            <form onSubmit={onSubmit} className="glass gradient-border space-y-4 rounded-3xl p-6 shadow-2xl shadow-black/40 lg:col-span-3">
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="Full Name" name="name" />
                 <Field label="Email Address" name="email" type="email" />
@@ -723,7 +719,7 @@ function Portfolio() {
               <Field label="Subject" name="subject" />
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Message</label>
-                <textarea required rows={5} className="w-full resize-none rounded-2xl border border-input bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary" />
+                <textarea required rows={5} className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm outline-none backdrop-blur-xl transition-all duration-300 ease-out placeholder:text-muted-foreground focus:border-white/25 focus:bg-white/[0.07] focus:shadow-cyan-500/10" />
               </div>
               <button type="submit" className="btn-neon group inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold">
                 {sent ? "Message Sent ✓" : (<>Submit Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></>)}
@@ -738,7 +734,7 @@ function Portfolio() {
             <p className="text-sm text-muted-foreground">© 2026 Aung Swam Pyae. All rights reserved.</p>
             <div className="flex items-center gap-2">
               {[Linkedin, Github, Facebook].map((I, i) => (
-                <a key={i} href="#" className="rounded-full border border-border p-2 text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground">
+                <a key={i} href="#" className="glass flex h-9 w-9 items-center justify-center rounded-full border-white/10 text-muted-foreground transition-all duration-300 ease-out hover:bg-white/[0.08] hover:border-white/25 hover:text-foreground hover:shadow-cyan-500/10">
                   <I className="h-4 w-4" />
                 </a>
               ))}
@@ -753,8 +749,7 @@ function Portfolio() {
 function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub: string }) {
   return (
     <div className="max-w-2xl">
-      <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em]"
-        style={{ background: "color-mix(in oklab, var(--violet) 15%, transparent)", color: "var(--cyan)", border: "1px solid color-mix(in oklab, var(--cyan) 30%, transparent)" }}>
+      <div className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25">
         {eyebrow}
       </div>
       <h2 className="text-gradient mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
@@ -767,7 +762,7 @@ function Field({ label, name, type = "text" }: { label: string; name: string; ty
   return (
     <div>
       <label className="mb-1.5 block text-xs font-medium text-muted-foreground">{label}</label>
-      <input required name={name} type={type} className="w-full rounded-2xl border border-input bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary" />
+      <input required name={name} type={type} className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm outline-none backdrop-blur-xl transition-all duration-300 ease-out placeholder:text-muted-foreground focus:border-white/25 focus:bg-white/[0.07] focus:shadow-cyan-500/10" />
     </div>
 
   );
