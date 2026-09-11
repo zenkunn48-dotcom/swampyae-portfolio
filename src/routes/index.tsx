@@ -559,7 +559,7 @@ function Portfolio() {
           <div className="mt-10 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {toolStack.map((cat, i) => (
               <Reveal key={cat.title} delay={i * 100}>
-                <div className="glass gradient-border group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02]">
+                <div className="glass gradient-border group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   <div
                     className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
                     style={{
@@ -574,7 +574,7 @@ function Portfolio() {
                     {cat.tools.map((t, ti) => (
                       <span
                         key={t.label}
-                        className="group/badge relative inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary/50 px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 hover:border-transparent hover:bg-background/80"
+                        className="group/badge relative inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium backdrop-blur-xl transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 hover:bg-white/[0.08] hover:border-white/25 hover:shadow-cyan-500/10"
                       >
                         <span
                           className="pointer-events-none absolute inset-0 -z-10 rounded-full opacity-0 transition-opacity duration-300 group-hover/badge:opacity-100"
@@ -600,7 +600,7 @@ function Portfolio() {
         <section id="brands" className="py-16">
           <SectionHead eyebrow="Collaborations" title="Brands & Experience" sub="Brands and organizations I've driven growth for across agency, retail, education, and corporate sectors." />
           <Reveal>
-            <div className="glass-panel relative mt-10 overflow-hidden rounded-3xl py-8">
+            <div className="glass-panel relative mt-10 overflow-hidden rounded-3xl py-8 transition-all duration-300 ease-out hover:bg-white/[0.03]">
               <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
               <div className="marquee-track flex w-max items-center">
@@ -612,7 +612,7 @@ function Portfolio() {
                           src={b.url}
                           alt={`${b.name} logo`}
                           loading="lazy"
-                          className="h-16 w-16 rounded-2xl object-contain p-1 opacity-80 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100 group-hover:shadow-[0_0_40px_-8px_color-mix(in_oklab,var(--violet)_70%,transparent)] sm:h-20 sm:w-20 md:h-24 md:w-24"
+                          className="h-16 w-16 rounded-2xl border border-white/10 bg-white/[0.04] object-contain p-1 opacity-80 shadow-lg shadow-black/30 backdrop-blur-xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:border-white/25 group-hover:bg-white/[0.08] group-hover:shadow-[0_0_40px_-8px_color-mix(in_oklab,var(--violet)_70%,transparent)] sm:h-20 sm:w-20 md:h-24 md:w-24"
                         />
                       </div>
                     ))}
@@ -637,7 +637,7 @@ function Portfolio() {
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {freelanceProjects.map((p, i) => (
               <Reveal key={p.id} delay={i * 120}>
-                <div className="glass gradient-border glow-hover group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.02]">
+                <div className="glass gradient-border glow-hover group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   <div className="flex items-start justify-between gap-3">
                     <FreelanceLogo name={p.name} src={p.logo} />
                     {p.location && (
