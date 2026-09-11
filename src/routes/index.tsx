@@ -252,7 +252,7 @@ function FreelanceLogo({ name, src }: { name: string; src: string }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border bg-background/70 p-1.5 shadow-[inset_0_1px_0_color-mix(in_oklab,var(--foreground)_10%,transparent),0_10px_30px_-12px_color-mix(in_oklab,var(--cyan)_45%,transparent)] backdrop-blur-xl transition-transform duration-300 group-hover:scale-110">
+    <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-1.5 shadow-2xl shadow-black/40 backdrop-blur-2xl transition-all duration-300 ease-out group-hover:scale-110 group-hover:bg-white/[0.10] group-hover:border-white/25">
       {(!loaded || failed) && (
         <span className="text-gradient text-2xl font-extrabold" aria-hidden="true">
           {name.charAt(0)}
