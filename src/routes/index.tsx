@@ -455,7 +455,7 @@ function Portfolio() {
                 { n: "500%", l: "MAXIMUM ACTUAL ROAS" },
                 { n: "20M+", l: "Ad Impressions Managed" },
                 { n: "60%+", l: "Average CPA Reduction" },
-                { n: "3+ Years", l: "Enterprise Marketing Experience" },
+                { n: "4+ Years", l: "Enterprise Marketing Experience" },
               ].map((s, i) => (
                 <Reveal key={s.l} delay={i * 100}>
                   <div className="glass gradient-border idle-glow flex h-full flex-col items-center rounded-3xl p-4 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10" style={{ animationDelay: `${i * 0.5}s` }}>
