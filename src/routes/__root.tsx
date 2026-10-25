@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -34,7 +35,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -86,8 +87,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Aung Swam Pyae — Digital Marketing Senior Supervisor" },
       { name: "twitter:description", content: "Portfolio of Aung Swam Pyae, Digital Marketing Senior Supervisor specializing in paid ads, growth strategy, and ROI-driven campaigns." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2e2013d6-8fd9-4477-9444-b5ffa0835b44/id-preview-9af2b00a--c0c1a467-505a-4df1-985e-b2d2d6fa8ba2.lovable.app-1781232781981.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2e2013d6-8fd9-4477-9444-b5ffa0835b44/id-preview-9af2b00a--c0c1a467-505a-4df1-985e-b2d2d6fa8ba2.lovable.app-1781232781981.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
