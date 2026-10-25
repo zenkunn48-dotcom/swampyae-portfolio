@@ -1,16 +1,15 @@
 import { useRef, useState } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { ArrowUp, BarChart3, CalendarDays, ChartNoAxesCombined } from 'lucide-react';
+import { ArrowUp, BarChart3, ChartNoAxesCombined } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { adsMetrics, gaMetrics, adsTrend, gaTrend, adsDateRange, gaDateRange, type AdsKey, type GaKey } from '@/lib/portfolio-analytics';
+import { adsMetrics, gaMetrics, adsTrend, gaTrend, type AdsKey, type GaKey } from '@/lib/portfolio-analytics';
 
 function TrendTooltip({ active, payload }: { active?: boolean; payload?: Array<{ name?: string; value?: number; color?: string; payload?: { date?: string } }> }) {
   if (!active || !payload?.length) return null;
   return (
     <div className="analytics-tooltip" role="status">
-      <p className="mb-2 font-semibold">{payload[0]?.payload?.date}</p>
       {payload.map((point, index) => (
         <p key={index} className="flex items-center justify-between gap-5 text-xs">
           <span>{point.name}</span><span className="font-semibold tabular-nums">{Number(point.value).toFixed(1)}</span>
@@ -54,7 +53,6 @@ export function MarketingAnalytics() {
         <motion.article ref={adsRef} {...entrance} animate={{ opacity: adsEntered ? 1 : 0 }} className="analytics-card" aria-labelledby="ads-heading">
           <div className="analytics-card-heading">
             <div className="flex items-center gap-3"><span className="analytics-icon text-chart-ads-blue"><ChartNoAxesCombined size={22} /></span><h3 id="ads-heading" className="text-lg font-semibold sm:text-xl">Google Ads</h3></div>
-            <span className="flex items-center gap-2 text-xs text-muted-foreground"><CalendarDays size={14} />{adsDateRange}</span>
           </div>
           <div className="analytics-metrics" role="group" aria-label="Google Ads metrics">
             {adsMetrics.map((metric, index) => (
@@ -68,21 +66,20 @@ export function MarketingAnalytics() {
             {adsEntered && <ResponsiveContainer width="100%" height="100%">
               <LineChart data={adsTrend} margin={{ top: 16, right: 14, bottom: 12, left: 0 }} accessibilityLayer>
                 <CartesianGrid stroke="var(--chart-grid)" vertical={false} strokeDasharray="3 5" />
-                <XAxis dataKey="index" type="number" domain={[0, 25]} ticks={[0, 6, 12, 18, 25]} tickFormatter={index => ['Jul 21, 2025', 'Oct', 'Jan', 'Apr', 'Jul 20, 2026'][[0, 6, 12, 18, 25].indexOf(index)] ?? ''} tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }} axisLine={false} tickLine={false} padding={{ left: 36, right: 36 }} />
+                <XAxis dataKey="index" type="number" domain={[0, 25]} hide />
                 <YAxis hide domain={[0, 110]} />
                 <Tooltip content={<TrendTooltip />} cursor={{ stroke: 'var(--chart-grid)' }} />
                 {adsMetrics.filter(metric => adsSelection.includes(metric.key)).map(metric => <Line key={metric.key} type="monotone" dataKey={metric.key} name={metric.label} stroke={metric.color} strokeWidth={2.5} dot={false} activeDot={{ r: 5, stroke: 'var(--foreground)', strokeWidth: 2 }} isAnimationActive={!reduceMotion} animationDuration={1800} animationEasing="ease-in-out" />)}
               </LineChart>
             </ResponsiveContainer>}
           </div>
-          <div className="analytics-chart-footer"><span>Illustrative trend · summary metrics as supplied</span><span>Jul 2025 — Jul 2026</span></div>
+          <div className="analytics-chart-footer"><span>Illustrative trend · summary metrics as supplied</span></div>
           <p className="analytics-description">Strategic Google Ads Specialist with a proven track record of managing high-budget campaigns across Search, Display, and Performance Max, focused on optimizing Quality Score and reducing CPA to achieve consistent growth.</p>
         </motion.article>
 
         <motion.article ref={gaRef} {...entrance} animate={{ opacity: gaEntered ? 1 : 0 }} className="analytics-card" aria-labelledby="ga-heading">
           <div className="analytics-card-heading">
             <div className="flex items-center gap-3"><span className="analytics-icon text-chart-ads-gold"><BarChart3 size={22} /></span><h3 id="ga-heading" className="text-lg font-semibold sm:text-xl">Google Analytics 4 <span className="text-muted-foreground">(GA4)</span></h3></div>
-            <span className="flex items-center gap-2 text-xs text-muted-foreground"><CalendarDays size={14} />{gaDateRange}</span>
           </div>
           <div className="analytics-metrics" role="group" aria-label="GA4 metrics">
             {gaMetrics.map((metric, index) => (
