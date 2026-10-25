@@ -1,0 +1,2 @@
+# Architecture rules
+- Keep portfolio analytics data in a browser-safe module and render charts in a dedicated component using the installed Recharts library; this separates verified summary values from illustrative trend series and keeps page composition focused.
