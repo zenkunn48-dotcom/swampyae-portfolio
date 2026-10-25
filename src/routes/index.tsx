@@ -12,6 +12,7 @@ import {
 import { Magnetic } from "@/components/Magnetic";
 import { EcosystemLoop } from "@/components/EcosystemLoop";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
+import { MarketingAnalytics } from "@/components/MarketingAnalytics";
 
 const profileAsset = { url: "/profile.jpg" };
 
@@ -36,6 +37,10 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Aung Swam Pyae — Digital Marketing Senior Supervisor" },
       { name: "description", content: "Results-driven digital marketing leader with 3+ years driving high-ROI multi-channel growth campaigns." },
+      { property: "og:title", content: "Aung Swam Pyae — Digital Marketing Senior Supervisor" },
+      { property: "og:description", content: "Explore Aung Swam Pyae’s marketing experience, Google Ads performance, GA4 analytics, and client projects." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Portfolio,
@@ -493,6 +498,8 @@ function Portfolio() {
           </div>
 
         </section>
+
+        <MarketingAnalytics />
 
         {/* Services */}
         <section id="services" className="relative py-20">

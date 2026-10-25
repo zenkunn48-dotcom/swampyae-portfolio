@@ -41,10 +41,23 @@
   --color-orange: var(--orange);
   --color-rose: var(--rose);
   --color-coral: var(--coral);
+  --color-chart-ads-blue: var(--chart-ads-blue);
+  --color-chart-ads-red: var(--chart-ads-red);
+  --color-chart-ads-gold: var(--chart-ads-gold);
+  --color-chart-ads-green: var(--chart-ads-green);
 }
 
 :root {
   --radius: 1rem;
+  --chart-ads-blue: oklch(0.72 0.17 250);
+  --chart-ads-red: oklch(0.72 0.19 25);
+  --chart-ads-gold: oklch(0.81 0.15 85);
+  --chart-ads-green: oklch(0.78 0.16 155);
+  --chart-previous: oklch(0.68 0.08 245);
+  --chart-grid: oklch(0.9 0.02 250 / 12%);
+  --chart-surface: color-mix(in oklab, var(--card) 45%, transparent);
+  --chart-reflection: color-mix(in oklab, var(--foreground) 15%, transparent);
+  --chart-shadow: oklch(0 0 0 / 35%);
   /* Obsidian Midnight */
   --background: oklch(0.16 0.03 265);
   --foreground: oklch(0.99 0 0);
@@ -81,6 +94,11 @@
 }
 
 .light {
+  --chart-ads-blue: oklch(0.51 0.19 250);
+  --chart-ads-red: oklch(0.53 0.2 25);
+  --chart-ads-green: oklch(0.46 0.14 155);
+  --chart-ads-gold: oklch(0.55 0.12 85);
+  --chart-grid: oklch(0.3 0.02 250 / 12%);
   --background: oklch(0.98 0.005 265);
   --foreground: oklch(0.18 0.02 260);
   --surface: oklch(0.96 0.008 268);
@@ -139,6 +157,39 @@
   box-shadow:
     inset 0 1px 0 0 color-mix(in oklab, var(--foreground) 9%, transparent),
     0 24px 60px -16px color-mix(in oklab, black 36%, transparent);
+}
+
+.analytics-card { min-width: 0; overflow: hidden; border-radius: var(--radius-xl); background: var(--chart-surface); border: 1px solid var(--chart-reflection); backdrop-filter: blur(28px) saturate(180%); box-shadow: inset 0 1px 0 var(--chart-reflection), 0 24px 60px -18px var(--chart-shadow); transition: background 300ms ease-out, border-color 300ms ease-out; }
+.analytics-card:hover { background: color-mix(in oklab, var(--card) 58%, transparent); border-color: color-mix(in oklab, var(--foreground) 25%, transparent); }
+.analytics-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px; }
+.analytics-icon { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 12px; background: color-mix(in oklab, var(--foreground) 5%, transparent); border: 1px solid var(--chart-reflection); }
+.analytics-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--chart-reflection); }
+.analytics-metric { --metric-color: var(--chart-ads-blue); height: 110px; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: center; gap: 7px; padding: 20px 24px; border-radius: 0; border-right: 1px solid var(--chart-reflection); color: var(--muted-foreground); position: relative; transition: background 300ms ease-out, color 300ms ease-out; }
+.analytics-metric:last-child { border-right: 0; }
+.analytics-metric:hover { background: color-mix(in oklab, var(--foreground) 6%, transparent); color: var(--foreground); }
+.analytics-metric.is-selected { background: color-mix(in oklab, var(--metric-color) 14%, transparent); color: var(--foreground); }
+.analytics-metric.is-selected::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--metric-color); }
+.analytics-metric.is-selected > span:first-child { color: var(--metric-color); }
+.analytics-metric-conversions { --metric-color: var(--chart-ads-red); }
+.analytics-metric-cpa { --metric-color: var(--chart-ads-gold); }
+.analytics-metric-cost { --metric-color: var(--chart-ads-green); }
+.analytics-ga-metric { height: 130px; }
+.analytics-plot { height: 270px; width: 100%; min-width: 0; padding: 12px 12px 0; }
+.analytics-chart-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 0 24px 20px; color: var(--muted-foreground); font-size: 11px; }
+.analytics-description { margin: 0; padding: 22px 24px; border-top: 1px solid var(--chart-reflection); font-size: 14px; line-height: 1.8; color: var(--muted-foreground); }
+.analytics-tooltip { padding: 14px; border-radius: 8px; border: 1px solid var(--chart-reflection); background: var(--popover); box-shadow: 0 12px 30px var(--chart-shadow); color: var(--foreground); font-size: 13px; }
+.analytics-legend-current::before, .analytics-legend-previous::before { content: ''; display: inline-block; width: 18px; margin-right: 6px; vertical-align: middle; border-top: 2px solid var(--chart-ads-blue); }
+.analytics-legend-previous::before { border-top: 2px dashed var(--chart-previous); }
+@media (max-width: 639px) {
+  .analytics-card-heading { padding: 18px 16px; }
+  .analytics-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .analytics-metric { padding: 16px; height: 100px; }
+  .analytics-metric:nth-child(2) { border-right: 0; }
+  .analytics-metric:nth-child(-n+2) { border-bottom: 1px solid var(--chart-reflection); }
+  .analytics-ga-metric { height: 118px; }
+  .analytics-plot { height: 235px; padding-inline: 0; }
+  .analytics-description { padding: 18px 16px; }
+  .analytics-chart-footer { padding-inline: 16px; }
 }
 
 @utility glass-panel {
