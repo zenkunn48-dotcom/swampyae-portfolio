@@ -94,7 +94,7 @@ export function MarketingAnalytics() {
             {gaEntered && <ResponsiveContainer width="100%" height="100%">
               <LineChart data={gaTrend} margin={{ top: 16, right: 14, bottom: 12, left: 0 }} accessibilityLayer>
                 <CartesianGrid stroke="var(--chart-grid)" vertical={false} strokeDasharray="3 5" />
-                <XAxis dataKey="index" type="number" domain={[0, 25]} ticks={[0, 4, 8, 12, 17, 21, 25]} tickFormatter={index => ['01 Jan', '01 Feb', '01 Mar', '01 Apr', '01 May', '01 Jun', '01 Jul'][[0, 4, 8, 12, 17, 21, 25].indexOf(index)] ?? ''} tick={{ fill: 'var(--muted-foreground)', fontSize: 10 }} axisLine={false} tickLine={false} padding={{ left: 16, right: 16 }} />
+                <XAxis dataKey="index" type="number" domain={[0, 25]} hide />
                 <YAxis hide domain={[0, 110]} />
                 <Tooltip content={<TrendTooltip />} cursor={{ stroke: 'var(--chart-grid)' }} />
                 <Line key={`${gaSelection}-previous`} type="monotone" dataKey={`${gaSelection}Previous`} name="Previous period" stroke="var(--chart-previous)" strokeDasharray="5 5" strokeWidth={2} dot={false} activeDot={{ r: 4 }} isAnimationActive={!reduceMotion} animationDuration={1800} />
