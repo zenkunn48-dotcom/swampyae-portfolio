@@ -435,7 +435,7 @@ function Portfolio() {
               Digital Marketing Senior Supervisor
             </p>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-              A results-driven Digital Marketing Senior Supervisor with over 3 years of experience orchestrating high-impact, multi-channel growth strategies. I specialize in driving brand visibility and maximizing ROI through data-backed decision-making, conversion optimization, and innovative content marketing.
+              A results-driven Digital Marketing Senior Supervisor with nearly 4 years of hands-on experience orchestrating high-impact, multi-channel growth strategies. I specialize in driving brand visibility and maximizing ROI through data-backed decision-making, conversion optimization, and innovative content marketing.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Magnetic strength={22}>
