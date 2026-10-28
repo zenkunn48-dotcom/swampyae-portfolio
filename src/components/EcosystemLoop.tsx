@@ -6,7 +6,7 @@ const items = [
   { label: "Creative Content", icon: Sparkles, pos: { left: "68.75%", top: "14.3%" } },
   { label: "Media Buying", icon: Target, pos: { left: "12.5%", top: "50%" } },
   { label: "SEO", icon: Search, pos: { left: "87.5%", top: "50%" } },
-  { label: "On Ground Marketing", icon: MapPin, pos: { left: "31.25%", top: "85.7%" } },
+  { label: "Brand Activations", icon: MapPin, pos: { left: "31.25%", top: "85.7%" } },
   { label: "Graphic Design", icon: Palette, pos: { left: "68.75%", top: "85.7%" } },
 ];
 
