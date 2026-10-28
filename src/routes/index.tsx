@@ -13,6 +13,7 @@ import { Magnetic } from "@/components/Magnetic";
 import { EcosystemLoop } from "@/components/EcosystemLoop";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { MarketingAnalytics } from "@/components/MarketingAnalytics";
+import { StrategyProposals } from "@/components/StrategyProposals";
 
 const profileAsset = { url: "/profile.jpg" };
 
@@ -500,6 +501,9 @@ function Portfolio() {
         </section>
 
         <MarketingAnalytics />
+
+        <StrategyProposals />
+
 
         {/* Services */}
         <section id="services" className="relative py-20">
