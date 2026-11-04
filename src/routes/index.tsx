@@ -14,6 +14,7 @@ import { EcosystemLoop } from "@/components/EcosystemLoop";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { MarketingAnalytics } from "@/components/MarketingAnalytics";
 import { StrategyProposals } from "@/components/StrategyProposals";
+import { AutomationWorkflows } from "@/components/AutomationWorkflows";
 
 const profileAsset = { url: "/profile.jpg" };
 
@@ -608,6 +609,8 @@ function Portfolio() {
         </section>
 
         {/* Brands & Experience — Infinite Marquee */}
+        <AutomationWorkflows />
+
         <section id="brands" className="py-16">
           <SectionHead eyebrow="Collaborations" title="Brands & Experience" sub="Brands and organizations I've driven growth for across agency, retail, education, and corporate sectors." />
           <Reveal>
