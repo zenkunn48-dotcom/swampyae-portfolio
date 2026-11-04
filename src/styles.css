@@ -195,7 +195,7 @@
 .automation-connections { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .automation-wire, .automation-pulse { fill: none; stroke: var(--workflow-wire); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
 .automation-pulse { stroke: var(--cyan); stroke-dasharray: 5 22; animation: workflow-flow 2.6s linear infinite; filter: drop-shadow(0 0 3px var(--cyan)); }
-.automation-shell:not(:has([data-state=active])) .automation-pulse { animation-play-state: paused; }
+.automation-paused .automation-pulse { animation-play-state: paused; }
 .automation-node { --node-accent: var(--cyan); position: relative; z-index: 1; display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 8px; width: calc(100% - 40px); height: 124px; min-width: 0; padding: 14px; border-radius: 8px; border: 1px solid var(--chart-reflection); background: var(--workflow-node); backdrop-filter: blur(20px); white-space: normal; text-align: left; transition: border-color 300ms ease, background 300ms ease, box-shadow 300ms ease, transform 300ms ease; }
 .automation-node:hover, .automation-node.is-active { background: color-mix(in oklab, var(--node-accent) 10%, var(--card)); border-color: var(--node-accent); box-shadow: 0 0 24px -12px var(--node-accent); transform: translateY(-3px); }
 .automation-tone-coral { --node-accent: var(--coral); }

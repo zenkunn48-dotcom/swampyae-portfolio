@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, Code2, GitBranch, Layers3, Search, Workflow, Zap } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
@@ -23,9 +23,11 @@ export function AutomationWorkflows() {
   const [active, setActive] = useState('automation');
   const [selected, setSelected] = useState<NodeKey | null>(null);
   const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { amount: 0.08 });
 
   return (
-    <motion.section id="ai-workflows" className="py-12 sm:py-20" aria-labelledby="automation-heading" initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: reduceMotion ? 0 : 0.6 }}>
+    <motion.section ref={sectionRef} id="ai-workflows" className={cn('py-12 sm:py-20', !inView && 'automation-paused')} aria-labelledby="automation-heading" initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: reduceMotion ? 0 : 0.6 }}>
       <div className="mb-8">
         <span className="text-sm font-medium text-cyan">Intelligence & Execution</span>
         <h2 id="automation-heading" className="mt-3 text-3xl font-bold sm:text-4xl">AI & Automation Workflows</h2>
