@@ -58,6 +58,10 @@
   --chart-surface: color-mix(in oklab, var(--card) 45%, transparent);
   --chart-reflection: color-mix(in oklab, var(--foreground) 15%, transparent);
   --chart-shadow: oklch(0 0 0 / 35%);
+  --workflow-surface: color-mix(in oklab, var(--surface) 60%, transparent);
+  --workflow-node: color-mix(in oklab, var(--card) 85%, transparent);
+  --workflow-wire: color-mix(in oklab, var(--cyan) 26%, var(--border));
+  --workflow-grid: color-mix(in oklab, var(--foreground) 8%, transparent);
   /* Obsidian Midnight */
   --background: oklch(0.16 0.03 265);
   --foreground: oklch(0.99 0 0);
@@ -180,6 +184,46 @@
 .analytics-tooltip { padding: 14px; border-radius: 8px; border: 1px solid var(--chart-reflection); background: var(--popover); box-shadow: 0 12px 30px var(--chart-shadow); color: var(--foreground); font-size: 13px; }
 .analytics-legend-current::before, .analytics-legend-previous::before { content: ''; display: inline-block; width: 18px; margin-right: 6px; vertical-align: middle; border-top: 2px solid var(--chart-ads-blue); }
 .analytics-legend-previous::before { border-top: 2px dashed var(--chart-previous); }
+.automation-shell { overflow: hidden; border: 1px solid var(--chart-reflection); border-radius: var(--radius-xl); background: var(--workflow-surface); backdrop-filter: blur(28px) saturate(180%); box-shadow: inset 0 1px 0 var(--chart-reflection), 0 24px 60px -18px var(--chart-shadow); }
+.automation-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--chart-reflection); }
+.automation-tabs { height: auto; gap: 4px; padding: 4px; background: color-mix(in oklab, var(--background) 35%, transparent); }
+.automation-tab { min-height: 40px; font-size: 11px; padding: 8px 16px; }
+.automation-tab[data-state=active] { background: color-mix(in oklab, var(--cyan) 12%, transparent); color: var(--cyan); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--cyan) 30%, transparent); }
+.automation-content { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr); align-items: center; }
+.automation-copy { min-width: 0; padding: 32px; min-height: 320px; }
+.automation-canvas { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, 1fr); align-items: center; justify-items: center; height: 360px; min-width: 0; border-left: 1px solid var(--chart-reflection); background-image: radial-gradient(var(--workflow-grid) 1px, transparent 1px); background-size: 18px 18px; }
+.automation-connections { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.automation-wire, .automation-pulse { fill: none; stroke: var(--workflow-wire); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.automation-pulse { stroke: var(--cyan); stroke-dasharray: 5 22; animation: workflow-flow 2.6s linear infinite; filter: drop-shadow(0 0 3px var(--cyan)); }
+.automation-shell:not(:has([data-state=active])) .automation-pulse { animation-play-state: paused; }
+.automation-node { --node-accent: var(--cyan); position: relative; z-index: 1; display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 8px; width: calc(100% - 40px); height: 124px; min-width: 0; padding: 14px; border-radius: 8px; border: 1px solid var(--chart-reflection); background: var(--workflow-node); backdrop-filter: blur(20px); white-space: normal; text-align: left; transition: border-color 300ms ease, background 300ms ease, box-shadow 300ms ease, transform 300ms ease; }
+.automation-node:hover, .automation-node.is-active { background: color-mix(in oklab, var(--node-accent) 10%, var(--card)); border-color: var(--node-accent); box-shadow: 0 0 24px -12px var(--node-accent); transform: translateY(-3px); }
+.automation-tone-coral { --node-accent: var(--coral); }
+.automation-tone-violet { --node-accent: var(--violet); }
+.automation-tone-lime { --node-accent: var(--lime); }
+.automation-node-top { display: flex; align-items: center; justify-content: space-between; }
+.automation-node-icon { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 6px; background: color-mix(in oklab, var(--node-accent) 12%, transparent); color: var(--node-accent); }
+.automation-node-name { font-size: 13px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+.automation-node-label { font-size: 10px; color: var(--muted-foreground); line-height: 1.4; }
+.automation-port { position: absolute; top: 50%; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--node-accent); background: var(--card); transform: translateY(-50%); }
+.automation-port-in { left: -4px; }
+.automation-port-out { right: -4px; }
+.automation-canvas-caption { position: absolute; bottom: 10px; display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--muted-foreground); }
+@keyframes workflow-flow { to { stroke-dashoffset: -108; } }
+@media (max-width: 899px) {
+  .automation-content { grid-template-columns: minmax(0, 1fr); }
+  .automation-copy { min-height: 240px; padding: 24px; }
+  .automation-canvas { border-left: 0; border-top: 1px solid var(--chart-reflection); }
+}
+@media (max-width: 479px) {
+  .automation-toolbar { padding: 12px; }
+  .automation-tabs { width: 100%; }
+  .automation-tab { flex: 1; padding-inline: 7px; font-size: 10px; }
+  .automation-copy { padding: 24px 18px; min-height: 280px; }
+  .automation-node { width: calc(100% - 26px); padding: 10px; }
+  .automation-node-name { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .automation-pulse { animation: none; } .automation-node { transition: none; } }
 @media (max-width: 639px) {
   .analytics-card-heading { padding: 18px 16px; }
   .analytics-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
