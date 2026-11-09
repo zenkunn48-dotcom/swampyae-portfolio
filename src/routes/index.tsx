@@ -64,13 +64,6 @@ const services = [
   { icon: Calendar, title: "Event Marketing & Execution", desc: "Directing the operational lifecycle of corporate events, from strategic planning and coordination to on-site execution, ensuring perfect alignment with marketing objectives." },
 ];
 
-const domains = [
-  { icon: Globe, title: "Digital Marketing Agency Ecosystem", desc: "Orchestrating media buying at scale across multiple client portfolios, managing cross-brand budgets, and leading multi-project delivery pipelines with precision." },
-  { icon: Building2, title: "Corporate Marketing Leadership", desc: "Directing full-lifecycle corporate strategies from ideation to execution, aligning cross-departmental operations and unifying brand vision across stakeholders." },
-  { icon: Share2, title: "Franchise & Network Operations", desc: "Specialized scaling for international education and franchise networks, localizing acquisition funnels and adapting global brand playbooks to regional markets." },
-  { icon: ShieldCheck, title: "Management & Brand Activation", desc: "Architecting cohesive brand identities, executing high-impact on-ground activations, safeguarding digital assets, and protecting IP across all channels." },
-];
-
 const experience = [
   { date: "Oct 2025 – Present", role: "Digital Marketing Senior Supervisor", company: "Grand Cherry Oo Co., Ltd.", desc: "Orchestrated strategic brand initiatives, handled end-to-end media buying, developed campaign proposals, and directed the corporate events lifecycle." },
   { date: "May 2025 – Sep 2025", role: "Social Media Executive", company: "Salt & Pixel Digital Marketing Agency", desc: "Media buying, cross-brand marketing strategy, copyright claims management, asset protection, and team monitoring." },
@@ -539,30 +532,6 @@ function Portfolio() {
               <EcosystemLoop />
             </div>
           </Reveal>
-        </section>
-
-        {/* Strategic Marketing Domains — Bento Grid */}
-        <section id="domains" className="py-20">
-          <SectionHead eyebrow="Branding & Marketing" title="Strategic Marketing Domains" sub="Four core competencies that define my versatility across agency, corporate, franchise, and brand activation environments." />
-          <div className="mt-10 flex flex-col gap-5">
-            {domains.map((d, i) => (
-              <Reveal key={d.title} delay={i * 110}>
-                <div className="glass gradient-border glow-hover group relative flex w-full flex-col gap-5 overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10 sm:flex-row sm:items-center sm:gap-7 sm:p-8">
-                  <div className="idle-breathe inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110"
-                    style={{ background: "linear-gradient(135deg, var(--cyan), var(--violet))", boxShadow: "0 10px 30px -10px color-mix(in oklab, var(--cyan) 60%, transparent)", animationDelay: `${i * 0.6}s` }}>
-
-                    <d.icon className="h-8 w-8" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-xl font-semibold sm:text-2xl">{d.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">{d.desc}</p>
-                  </div>
-                  <div className="pointer-events-none absolute -right-16 -bottom-16 h-56 w-56 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
-                    style={{ background: "radial-gradient(closest-side, var(--violet), transparent)" }} />
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </section>
 
         {/* Marketing Tool Stack & Workflow */}
