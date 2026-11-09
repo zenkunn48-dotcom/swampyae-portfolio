@@ -541,30 +541,6 @@ function Portfolio() {
           </Reveal>
         </section>
 
-        {/* Strategic Marketing Domains — Bento Grid */}
-        <section id="domains" className="py-20">
-          <SectionHead eyebrow="Branding & Marketing" title="Strategic Marketing Domains" sub="Four core competencies that define my versatility across agency, corporate, franchise, and brand activation environments." />
-          <div className="mt-10 flex flex-col gap-5">
-            {domains.map((d, i) => (
-              <Reveal key={d.title} delay={i * 110}>
-                <div className="glass gradient-border glow-hover group relative flex w-full flex-col gap-5 overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10 sm:flex-row sm:items-center sm:gap-7 sm:p-8">
-                  <div className="idle-breathe inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110"
-                    style={{ background: "linear-gradient(135deg, var(--cyan), var(--violet))", boxShadow: "0 10px 30px -10px color-mix(in oklab, var(--cyan) 60%, transparent)", animationDelay: `${i * 0.6}s` }}>
-
-                    <d.icon className="h-8 w-8" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-xl font-semibold sm:text-2xl">{d.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">{d.desc}</p>
-                  </div>
-                  <div className="pointer-events-none absolute -right-16 -bottom-16 h-56 w-56 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
-                    style={{ background: "radial-gradient(closest-side, var(--violet), transparent)" }} />
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
         {/* Marketing Tool Stack & Workflow */}
         <section id="toolstack" className="py-20">
           <SectionHead eyebrow="Tech Stack" title="Marketing Tool Stack & Workflow" sub="A battle-tested arsenal of advertising, analytics, and creative platforms that power high-performance campaigns." />
