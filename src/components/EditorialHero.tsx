@@ -23,7 +23,7 @@ export function EditorialHero() {
       </div>
       <div className="editorial-badge editorial-badge-roi"><Sparkles className="h-4 w-4 text-cyan" />ROI Focused</div>
       <div className="editorial-badge editorial-badge-growth"><TrendingUp className="h-4 w-4 text-emerald" />Data-Driven Growth</div>
-      <p className="editorial-role">Digital Marketing <span>Senior Supervisor</span><em>& Media Buying Specialist</em></p>
+      <p className="editorial-role">Digital Marketing <span>Senior Supervisor</span></p>
       <div className="editorial-bottomline">
         <div className="editorial-expertise">
           <p className="text-xs text-muted-foreground">Nearly 4 years of hands-on experience</p>
