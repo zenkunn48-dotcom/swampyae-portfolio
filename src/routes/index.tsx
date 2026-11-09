@@ -15,8 +15,10 @@ import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { MarketingAnalytics } from "@/components/MarketingAnalytics";
 import { StrategyProposals } from "@/components/StrategyProposals";
 import { AutomationWorkflows } from "@/components/AutomationWorkflows";
+import { EditorialHero } from "@/components/EditorialHero";
+import { Button } from "@/components/ui/button";
 
-const profileAsset = { url: "/profile.jpg" };
+
 
 const brands = [
   { name: "Grand Cherry Oo", url: "/logos/grand-cherry-oo.jpg" },
@@ -373,125 +375,37 @@ function Portfolio() {
       </header>
 
       <main className="mx-auto max-w-7xl overflow-x-hidden px-6 pt-28 md:px-16 md:pt-32">
-        {/* Hero */}
-        <section id="about" className="relative grid min-h-screen items-center gap-12 py-16 md:grid-cols-2 md:py-24">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-20 left-1/2 -z-10 h-[420px] w-[680px] -translate-x-1/2 rounded-full opacity-40 blur-3xl"
-            style={{ background: "radial-gradient(closest-side, var(--primary), transparent)" }}
-          />
-          <div>
-            <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/20">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald" /> Available for Management and Strategic Roles
-            </span>
-            <h1 className="mt-5 space-y-2 text-[clamp(1.625rem,7vw,2.5rem)] font-bold leading-snug tracking-tight sm:space-y-3 sm:text-5xl md:space-y-4">
-              <span
-                className="block opacity-0"
-                style={{ animation: `word-rise 0.7s ease-out forwards`, animationDelay: `0ms` }}
-              >
-                Hello,
-              </span>
-              <span className="block whitespace-nowrap">
-                {/* Mobile: shorter contraction to guarantee single line */}
-                <span className="inline sm:hidden">
-                  {["I'm", "Aung", "Swam", "Pyae"].map((word, i) => (
-                    <span
-                      key={`m-${i}`}
-                      className={`inline-block opacity-0 ${i >= 1 ? "font-bold bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent" : ""}`}
-                      style={{
-                        animation: `word-rise 0.7s ease-out forwards`,
-                        animationDelay: `${(i + 1) * 120}ms`,
-                        marginRight: "0.3em",
-                      }}
-                    >
-                      {word}
-                    </span>
-                  ))}
-                </span>
-                {/* Tablet/Desktop: full greeting */}
-                <span className="hidden sm:inline">
-                  {["I", "am", "Aung", "Swam", "Pyae"].map((word, i) => (
-                    <span
-                      key={`d-${i}`}
-                      className={`inline-block opacity-0 ${i >= 2 ? "font-bold bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent" : ""}`}
-                      style={{
-                        animation: `word-rise 0.7s ease-out forwards`,
-                        animationDelay: `${(i + 1) * 120}ms`,
-                        marginRight: "0.3em",
-                      }}
-                    >
-                      {word}
-                    </span>
-                  ))}
-                </span>
-              </span>
-            </h1>
-            <p className="mt-4 text-2xl font-semibold text-gradient sm:mt-5 sm:text-3xl">
-              Digital Marketing Senior Supervisor
-            </p>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+        {/* Editorial introduction */}
+        <section id="about" className="editorial-section">
+          <EditorialHero />
+          <div className="editorial-summary">
+            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
               A results-driven Digital Marketing Senior Supervisor with nearly 4 years of hands-on experience orchestrating high-impact, multi-channel growth strategies. I specialize in driving brand visibility and maximizing ROI through data-backed decision-making, conversion optimization, and innovative content marketing.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <Magnetic strength={22}>
-                <a
-                  href="https://apexlabdigitalmarketingservice.lovable.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-neon group inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold"
-                >
-                  Explore Services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </a>
+                <Button asChild variant="outline" className="glass border-border text-foreground hover:bg-accent/10 hover:text-foreground">
+                  <a href="https://apexlabdigitalmarketingservice.lovable.app" target="_blank" rel="noopener noreferrer">Explore Services <ArrowRight /></a>
+                </Button>
               </Magnetic>
-              <Magnetic strength={14}>
-                <button onClick={() => scrollTo("contact")} className="glass glow-hover inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
-                  Let's Connect
-                </button>
-              </Magnetic>
-            </div>
-
-            <div className="mt-10 grid max-w-xl grid-cols-2 gap-4 sm:grid-cols-4">
-              {[
-                { n: "500%", l: "MAXIMUM ACTUAL ROAS" },
-                { n: "20M+", l: "Ad Impressions Managed" },
-                { n: "60%+", l: "Average CPA Reduction" },
-                { n: "4+ Years", l: "Enterprise Marketing Experience" },
-              ].map((s, i) => (
-                <Reveal key={s.l} delay={i * 100}>
-                  <div className="glass gradient-border idle-glow flex h-full flex-col items-center rounded-3xl p-4 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10" style={{ animationDelay: `${i * 0.5}s` }}>
-                    <div className="text-gradient text-2xl font-extrabold tracking-tight sm:text-3xl">
-                      <AnimatedCounter value={s.n} />
-                    </div>
-                    <div className="mt-2 text-[11px] font-medium uppercase leading-snug tracking-wide text-muted-foreground">
-                      {s.l}
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-
-          </div>
-          <div className="relative mx-auto">
-            <div className="absolute inset-0 -z-10 animate-pulse-glow rounded-full bg-primary/40 blur-3xl" />
-            <div className="glow-ring relative h-72 w-72 overflow-hidden rounded-full sm:h-96 sm:w-96">
-              <img
-                src={profileAsset.url}
-                alt="Aung Swam Pyae"
-                className="h-full w-full object-cover object-center"
-                style={{
-                  imageRendering: "-webkit-optimize-contrast",
-                }}
-              />
-            </div>
-            <div className="glass gradient-border absolute -bottom-4 -left-4 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm shadow-2xl shadow-black/40 transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25">
-              <TrendingUp className="h-4 w-4 text-emerald" /> Data-Driven Growth
-            </div>
-            <div className="glass gradient-border absolute -right-4 top-6 flex items-center gap-2 rounded-2xl px-4 py-2 text-sm shadow-2xl shadow-black/40 transition-all duration-300 ease-out hover:bg-white/[0.07] hover:border-white/25">
-              <Sparkles className="h-4 w-4" style={{ color: "var(--cyan)" }} /> ROI Focused
+              <Button variant="ghost" onClick={() => scrollTo("contact")}>Let's Connect <ArrowRight /></Button>
             </div>
           </div>
-
+          <div className="grid grid-cols-2 gap-4 pb-10 sm:grid-cols-4">
+            {[
+              { n: "500%", l: "MAXIMUM ACTUAL ROAS" },
+              { n: "20M+", l: "Ad Impressions Managed" },
+              { n: "60%+", l: "Average CPA Reduction" },
+              { n: "4+ Years", l: "Enterprise Marketing Experience" },
+            ].map((s, i) => (
+              <Reveal key={s.l} delay={i * 100}>
+                <div className="glass gradient-border idle-glow flex h-full flex-col items-center rounded-3xl p-4 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-foreground/5">
+                  <div className="text-gradient text-2xl font-extrabold sm:text-3xl"><AnimatedCounter value={s.n} /></div>
+                  <div className="mt-2 text-[11px] font-medium uppercase leading-snug text-muted-foreground">{s.l}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </section>
 
         <MarketingAnalytics />
