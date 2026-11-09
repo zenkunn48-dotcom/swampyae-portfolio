@@ -1,3 +1,4 @@
 # Architecture rules
+- Keep the editorial introduction in a dedicated browser-safe component using the existing portrait and an experience-section anchor; this isolates visual composition without altering portfolio content or integrations.
 - Keep portfolio analytics data in a browser-safe module and render charts in a dedicated component using the installed Recharts library; this separates verified summary values from illustrative trend series and keeps page composition focused.
 - Keep the AI capability visualizer in a dedicated browser-safe component with accessible design-system tabs and buttons; stack and node selections describe capabilities rather than execute real integrations.

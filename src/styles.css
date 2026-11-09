@@ -45,6 +45,8 @@
   --color-chart-ads-red: var(--chart-ads-red);
   --color-chart-ads-gold: var(--chart-ads-gold);
   --color-chart-ads-green: var(--chart-ads-green);
+  --font-editorial: "Cormorant Garamond", Georgia, serif;
+  --font-masthead: "Barlow Condensed", Impact, sans-serif;
 }
 
 :root {
@@ -62,6 +64,13 @@
   --workflow-node: color-mix(in oklab, var(--card) 85%, transparent);
   --workflow-wire: color-mix(in oklab, var(--cyan) 26%, var(--border));
   --workflow-grid: color-mix(in oklab, var(--foreground) 8%, transparent);
+  --editorial-background: #07090e;
+  --editorial-foreground: oklch(0.97 0.005 260);
+  --editorial-muted: oklch(0.73 0.02 260);
+  --editorial-grid: oklch(0.65 0.025 260 / 9%);
+  --editorial-glass: oklch(0.2 0.035 268 / 40%);
+  --editorial-border: oklch(1 0 0 / 15%);
+  --editorial-shadow: oklch(0 0 0 / 45%);
   /* Obsidian Midnight */
   --background: oklch(0.16 0.03 265);
   --foreground: oklch(0.99 0 0);
