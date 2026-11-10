@@ -380,7 +380,7 @@ function Portfolio() {
           <EditorialHero />
           <div className="editorial-summary">
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              A results-driven Digital Marketing Senior Supervisor with nearly 4 years of hands-on experience orchestrating high-impact, multi-channel growth strategies. I specialize in driving brand visibility and maximizing ROI through data-backed decision-making, conversion optimization, and innovative content marketing.
+              I am Aung Swam Pyae. A results-driven Digital Marketing Senior Supervisor with nearly 4 years of hands-on experience orchestrating high-impact, multi-channel growth strategies. I specialize in driving brand visibility and maximizing ROI through data-backed decision-making, conversion optimization, and innovative content marketing.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Magnetic strength={22}>
