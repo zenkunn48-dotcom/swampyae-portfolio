@@ -13,13 +13,11 @@ export function EditorialHero() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="editorial-topline">
-        <span className="font-mono text-xs text-muted-foreground">Y2026 / ASP</span>
         <span className="editorial-availability"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald" />Available for Management and Strategic Roles</span>
       </div>
       <h1 className="editorial-name"><span>AUNG</span> <span>SWAM PYAE</span></h1>
       <div className="editorial-portrait">
         <img src="/profile.jpg" alt="Aung Swam Pyae" width={1920} height={1920} fetchPriority="high" />
-        <span className="editorial-portrait-mark" aria-hidden="true">ASP / 01</span>
       </div>
       <div className="editorial-badge editorial-badge-roi"><Sparkles className="h-4 w-4 text-cyan" />ROI Focused</div>
       <div className="editorial-badge editorial-badge-growth"><TrendingUp className="h-4 w-4 text-emerald" />Data-Driven Growth</div>
