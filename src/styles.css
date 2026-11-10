@@ -178,7 +178,7 @@
 }
 
 .editorial-section { scroll-margin-top: 100px; }
-.editorial-scene { position: relative; isolation: isolate; height: 680px; color: var(--editorial-foreground); background-color: var(--editorial-background); background-image: linear-gradient(to right, var(--editorial-grid) 1px, transparent 1px), linear-gradient(to bottom, var(--editorial-grid) 1px, transparent 1px); background-size: 24px 24px; margin-inline: -64px; padding: 28px 64px; border-block: 1px solid var(--editorial-border); }
+.editorial-scene { position: relative; isolation: isolate; height: 680px; color: var(--editorial-foreground); background-color: transparent; background-image: linear-gradient(to right, var(--editorial-grid) 1px, transparent 1px), linear-gradient(to bottom, var(--editorial-grid) 1px, transparent 1px); background-size: 24px 24px; margin-inline: -64px; padding: 28px 64px; }
 .editorial-topline { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
 .editorial-scene .text-muted-foreground { color: var(--editorial-muted); }
 .editorial-availability { display: inline-flex; align-items: center; gap: 8px; color: var(--editorial-muted); font-size: 10px; }
