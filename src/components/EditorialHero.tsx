@@ -28,7 +28,7 @@ export function EditorialHero() {
         <div className="editorial-expertise">
           <p className="text-xs text-muted-foreground">Nearly 4 years of hands-on experience</p>
           <div className="mt-3 flex flex-wrap gap-2">
-            {["Media Buying", "Growth Strategy", "Brand Activations"].map(tag => <span key={tag} className="editorial-tag">{tag}</span>)}
+            {["Media Buying", "Growth Strategy", "Brand Activations", "Marketing Strategies", "AI & Automation Strategist", "SEO", "SEM Strategies"].map(tag => <span key={tag} className="editorial-tag">{tag}</span>)}
           </div>
         </div>
         <Button asChild variant="outline" className="editorial-action group">
