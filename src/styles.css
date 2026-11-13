@@ -46,7 +46,7 @@
   --color-chart-ads-gold: var(--chart-ads-gold);
   --color-chart-ads-green: var(--chart-ads-green);
   --font-editorial: "Cormorant Garamond", Georgia, serif;
-  --font-role: "Poppins", sans-serif;
+  --font-role: "Playfair Display", "Cormorant Garamond", Georgia, serif;
   --font-masthead: "Barlow Condensed", Impact, sans-serif;
 }
 
@@ -187,7 +187,8 @@
 .editorial-name span:last-child { -webkit-text-stroke: 1.8px var(--editorial-name-stroke); }
 .editorial-portrait { position: absolute; z-index: 1; top: 177px; left: 50%; transform: translateX(-50%); width: 280px; height: 340px; padding: 3px; border-radius: 24px; border: 1px solid var(--editorial-portrait-border); background: var(--editorial-glass); backdrop-filter: blur(24px); box-shadow: -16px 0 44px -12px var(--editorial-backlight-cyan), 16px 0 44px -12px var(--editorial-backlight-violet), 0 16px 40px -16px var(--editorial-shadow); }
 .editorial-portrait img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
-.editorial-role { position: absolute; z-index: 3; top: 533px; left: 24px; right: 24px; margin-top: 12px; text-align: center; font-family: var(--font-role); font-size: 24px; line-height: 1.5; font-weight: 600; letter-spacing: 0; white-space: nowrap; pointer-events: none; }
+.editorial-role { position: absolute; z-index: 3; top: 533px; left: 24px; right: 24px; margin-top: 12px; text-align: center; font-family: var(--font-role); font-size: 28px; line-height: 1.35; font-weight: 600; font-style: italic; letter-spacing: 0.02em; white-space: nowrap; pointer-events: none; color: var(--editorial-foreground); text-shadow: 0 0 26px color-mix(in oklab, var(--cyan) 22%, transparent); }
+.editorial-role::before { content: ""; display: block; width: 68px; height: 1px; margin: 0 auto 14px; background: linear-gradient(to right, transparent, color-mix(in oklab, var(--cyan) 45%, transparent), transparent); }
 .editorial-badge { position: absolute; z-index: 2; display: flex; align-items: center; gap: 8px; border: 1px solid var(--editorial-border); background: var(--editorial-glass); backdrop-filter: blur(24px); box-shadow: inset 0 1px 0 var(--editorial-border), 0 12px 30px var(--editorial-shadow); padding: 10px 14px; border-radius: 8px; font-size: 11px; }
 .editorial-badge-roi { top: 260px; left: calc(50% + 115px); }
 .editorial-badge-growth { top: 305px; right: calc(50% + 112px); }
@@ -204,14 +205,14 @@
   .editorial-availability { max-width: 220px; line-height: 1.5; font-size: 9px; }
   .editorial-name { top: 95px; font-size: 90px; }
   .editorial-portrait { top: 184px; width: 250px; height: 312px; }
-  .editorial-role { top: 512px; font-size: 18px; }
+  .editorial-role { top: 512px; font-size: 20px; }
   .editorial-badge-roi { top: 257px; left: auto; right: 24px; }
   .editorial-badge-growth { top: 313px; right: auto; left: 24px; }
   .editorial-bottomline { bottom: 24px; left: 24px; right: 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
   .editorial-action { align-self: flex-end; }
 }
-@media (max-width: 479px) { .editorial-role { font-size: 14px; } }
-@media (max-width: 359px) { .editorial-role { font-size: 12px; } }
+@media (max-width: 479px) { .editorial-role { font-size: 15px; } }
+@media (max-width: 359px) { .editorial-role { font-size: 13px; } }
 @media (max-width: 399px) { .editorial-name { font-size: 70px; } .editorial-badge { padding: 8px 10px; font-size: 10px; } }
 .analytics-card { min-width: 0; overflow: hidden; border-radius: var(--radius-xl); background: var(--chart-surface); border: 1px solid var(--chart-reflection); backdrop-filter: blur(28px) saturate(180%); box-shadow: inset 0 1px 0 var(--chart-reflection), 0 24px 60px -18px var(--chart-shadow); transition: background 300ms ease-out, border-color 300ms ease-out; }
 .analytics-card:hover { background: color-mix(in oklab, var(--card) 58%, transparent); border-color: color-mix(in oklab, var(--foreground) 25%, transparent); }
