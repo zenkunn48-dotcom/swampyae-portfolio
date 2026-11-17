@@ -177,6 +177,48 @@
 }
 
 .editorial-section { scroll-margin-top: 100px; }
+:root {
+  --build-blue: #3b82f6;
+  --build-white: #ffffff;
+  --build-guide: rgba(59, 130, 246, .4);
+  --build-tick: rgba(148, 163, 184, .3);
+  --build-skeleton: rgba(148, 163, 184, .15);
+  --build-placeholder: #1e293b;
+  --build-cursor-outline: #07090e;
+  --build-cursor-gradient: linear-gradient(120deg, var(--violet), var(--indigo));
+}
+.light { --build-blue: #2563eb; --build-guide: rgba(37, 99, 235, .4); }
+.build-layer { position: absolute; inset: 0; z-index: 10; pointer-events: none; overflow: hidden; }
+.build-box { position: absolute; border: 1px solid var(--build-blue); }
+.build-label { position: absolute; top: 0; left: 0; transform: translateY(-100%); padding: 3px 5px; border-radius: 2px; background: var(--build-blue); color: var(--build-white); font: 10px/1.2 monospace; letter-spacing: 0; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.build-handle { position: absolute; width: 6px; height: 6px; border: 1px solid var(--build-blue); background: var(--build-white); }
+.build-handle-0 { top: -3px; left: -3px; }
+.build-handle-1 { top: -3px; right: -3px; }
+.build-handle-2 { bottom: -3px; left: -3px; }
+.build-handle-3 { bottom: -3px; right: -3px; }
+.build-skeleton { position: absolute; inset: 12%; background: repeating-linear-gradient(to bottom, var(--build-skeleton) 0 8px, transparent 8px 16px); border-radius: 2px; }
+.build-box-photo .build-skeleton { inset: 0; background: var(--build-placeholder); }
+.build-box-photo .build-skeleton::before, .build-box-photo .build-skeleton::after { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: var(--build-tick); transform: rotate(48deg); }
+.build-box-photo .build-skeleton::after { transform: rotate(-48deg); }
+.build-photo-frost { position: absolute; inset: 0; backdrop-filter: blur(12px); border-radius: 24px; }
+.build-ruler { position: absolute; background-color: color-mix(in oklab, var(--background) 85%, transparent); }
+.build-ruler-top { top: 0; left: 16px; right: 0; height: 16px; background-image: repeating-linear-gradient(to right, var(--build-tick) 0 1px, transparent 1px 12px); }
+.build-ruler-left { top: 0; bottom: 0; left: 0; width: 16px; background-image: repeating-linear-gradient(to bottom, var(--build-tick) 0 1px, transparent 1px 12px); }
+.build-guide { position: absolute; transform-origin: top left; }
+.build-guide-horizontal { left: 16px; top: 177px; right: 0; border-top: 1px dashed var(--build-guide); }
+.build-guide-vertical { left: 50%; top: 16px; bottom: 0; border-left: 1px dashed var(--build-guide); }
+.build-status { position: absolute; left: 24px; font: 10px/1.5 monospace; color: var(--foreground); }
+.build-skip { position: absolute; z-index: 11; right: 24px; height: 30px; padding: 4px 8px; font: 10px/1.5 monospace; opacity: 0; pointer-events: none; color: var(--foreground); }
+.build-cursor { position: absolute; top: 0; left: 0; display: flex; align-items: center; gap: 4px; }
+.build-cursor svg { fill: var(--build-white); stroke: var(--build-cursor-outline); stroke-width: 1; }
+.build-cursor span { font: 9px/1.5 monospace; padding: 2px 6px; border-radius: 8px; color: var(--build-white); background: var(--build-cursor-gradient); }
+.build-cursor i { position: absolute; left: -6px; top: -6px; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--build-blue); }
+.build-card-frame { position: absolute; inset: 1px; z-index: 10; border: 1px dashed var(--build-blue); border-radius: inherit; pointer-events: none; }
+.build-card-frame .build-label { top: 8px; left: 8px; transform: none; max-width: calc(100% - 16px); }
+@media (max-width: 767px) { .build-cursor { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .build-layer, .build-card-frame, .build-skip { display: none; }
+}
 .editorial-scene { position: relative; isolation: isolate; height: 740px; color: var(--editorial-foreground); background-color: transparent; background-image: linear-gradient(to right, var(--editorial-grid) 1px, transparent 1px), linear-gradient(to bottom, var(--editorial-grid) 1px, transparent 1px); background-size: 24px 24px; margin-inline: -64px; padding: 28px 64px; }
 .editorial-topline { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
 .editorial-scene .text-muted-foreground { color: var(--editorial-muted); }

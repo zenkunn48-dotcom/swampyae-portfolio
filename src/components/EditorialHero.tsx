@@ -1,17 +1,11 @@
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PortfolioBuildIntro } from "@/components/PortfolioBuildIntro";
 
 export function EditorialHero() {
-  const reducedMotion = useReducedMotion();
   return (
-    <motion.div
-      className="editorial-scene"
-      initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
+    <div className="editorial-build-anchor"><div className="editorial-scene">
+      <PortfolioBuildIntro />
       <div className="editorial-topline">
         <span className="editorial-availability"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald" />Available for Management and Strategic Roles</span>
       </div>
@@ -33,6 +27,6 @@ export function EditorialHero() {
           <a href="#experience">Explore Portfolio <ArrowRight className="transition-transform group-hover:translate-x-1" /></a>
         </Button>
       </div>
-    </motion.div>
+    </div></div>
   );
 }

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useReducedMotion } from "framer-motion";
 import {
   Menu, X, Sun, Moon, ArrowRight, Mail, Phone, MapPin,
   Linkedin, Github, Facebook, Target, BarChart3, Search,
@@ -204,30 +205,19 @@ function useInView<T extends HTMLElement>(opts: IntersectionObserverInit = { thr
   return { ref, inView };
 }
 
-function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
-  const { ref, inView } = useInView<HTMLDivElement>();
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: inView ? 1 : 0,
-        transform: inView ? "translateY(0)" : "translateY(24px)",
-        transition: `opacity 0.7s ease-out ${delay}ms, transform 0.7s ease-out ${delay}ms`,
-        willChange: "opacity, transform",
-      }}
-    >
-      {children}
-    </div>
-  );
+function Reveal({ children, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+  return <div className={className}>{children}</div>;
 }
 
-function AnimatedCounter({ value, duration = 1800 }: { value: string; duration?: number }) {
+function AnimatedCounter({ value, duration = 1500 }: { value: string; duration?: number }) {
   const { ref, inView } = useInView<HTMLSpanElement>({ threshold: 0.4 });
   const [display, setDisplay] = useState("0");
+  const completed = useRef(false);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!inView) return;
+    if (reducedMotion) { setDisplay(value); return; }
+    if (!inView || completed.current) return;
     const match = value.match(/^([\d.]+)(.*)$/);
     if (!match) { setDisplay(value); return; }
     const target = parseFloat(match[1]);
@@ -241,12 +231,13 @@ function AnimatedCounter({ value, duration = 1800 }: { value: string; duration?:
       const current = target * eased;
       setDisplay(current.toFixed(decimals) + suffix);
       if (p < 1) raf = requestAnimationFrame(tick);
+      else completed.current = true;
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView, value, duration]);
+  }, [inView, value, duration, reducedMotion]);
 
-  return <span ref={ref}>{display}</span>;
+  return <span ref={ref}>{reducedMotion ? value : display}</span>;
 }
 
 function FreelanceLogo({ name, src }: { name: string; src: string }) {
@@ -399,7 +390,7 @@ function Portfolio() {
               { n: "4+ Years", l: "Enterprise Marketing Experience" },
             ].map((s, i) => (
               <Reveal key={s.l} delay={i * 100}>
-                <div className="glass gradient-border idle-glow flex h-full flex-col items-center rounded-3xl p-4 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-foreground/5">
+                <div data-build-card className="glass gradient-border idle-glow flex h-full flex-col items-center rounded-3xl p-4 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-foreground/5">
                   <div className="text-gradient text-2xl font-extrabold sm:text-3xl"><AnimatedCounter value={s.n} /></div>
                   <div className="mt-2 text-[11px] font-medium uppercase leading-snug text-muted-foreground">{s.l}</div>
                 </div>
@@ -426,7 +417,7 @@ function Portfolio() {
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.title} delay={i * 90}>
-                <div className="glass gradient-border glow-hover group relative h-full overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
+                <div data-build-card className="glass gradient-border glow-hover group relative h-full overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   <div className="idle-float mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110"
                     style={{ background: "linear-gradient(135deg, var(--violet), var(--cyan))", boxShadow: "0 10px 30px -10px color-mix(in oklab, var(--violet) 60%, transparent)", animationDelay: `${i * 0.4}s` }}>
 
@@ -454,7 +445,7 @@ function Portfolio() {
           <div className="mt-10 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {toolStack.map((cat, i) => (
               <Reveal key={cat.title} delay={i * 100}>
-                <div className="glass gradient-border group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
+                <div data-build-card className="glass gradient-border group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   <div
                     className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
                     style={{
@@ -534,7 +525,7 @@ function Portfolio() {
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {freelanceProjects.map((p, i) => (
               <Reveal key={p.id} delay={i * 120}>
-                <div className="glass gradient-border glow-hover group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
+                <div data-build-card className="glass gradient-border glow-hover group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:bg-white/[0.07] hover:border-white/25 hover:shadow-cyan-500/10">
                   <div className="flex items-start justify-between gap-3">
                     <FreelanceLogo name={p.name} src={p.logo} />
                     {p.location && (
