@@ -39,6 +39,7 @@ const freelanceLogos = {
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [{ rel: "preload", as: "image", href: "/profile.jpg", fetchPriority: "high" }],
     meta: [
       { title: "Aung Swam Pyae — Digital Marketing Senior Supervisor" },
       { name: "description", content: "Results-driven digital marketing leader with 3+ years driving high-ROI multi-channel growth campaigns." },

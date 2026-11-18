@@ -4,8 +4,9 @@ import { PortfolioBuildIntro } from "@/components/PortfolioBuildIntro";
 
 export function EditorialHero() {
   return (
-    <div className="editorial-build-anchor"><div className="editorial-scene">
+    <div className="editorial-build-anchor"><div className="editorial-scene build-mobile-pending">
       <PortfolioBuildIntro />
+      <span className="build-scroll-hint" aria-hidden="true">Scroll down ↓</span>
       <div className="editorial-topline">
         <span className="editorial-availability"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald" />Available for Management and Strategic Roles</span>
       </div>

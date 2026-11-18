@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
 import { introScrollDistance } from '@/lib/build-intro';
+import { setupMobileBuild } from '@/lib/mobile-build-intro';
 
 const targets = [
   ['.editorial-name span:first-child', 'H1 · AUNG', .35],
@@ -30,7 +31,8 @@ export function PortfolioBuildIntro() {
     const media = gsap.matchMedia();
     const initialize = contextSafe(() => {
       if (disposed) return;
-      media.add('(prefers-reduced-motion: no-preference)', () => {
+      media.add('(prefers-reduced-motion: no-preference) and (max-width: 1023px)', () => setupMobileBuild(hero, main, skip.current));
+      media.add('(prefers-reduced-motion: no-preference) and (min-width: 1024px)', () => {
         const layer = document.createElement('div');
         layer.className = 'build-layer';
         layer.setAttribute('aria-hidden', 'true');
@@ -158,8 +160,15 @@ export function PortfolioBuildIntro() {
         };
       });
     });
-    void document.fonts.ready.then(initialize);
-    return () => { disposed = true; media.revert(); };
+    const image = hero.querySelector('img');
+    const imageReady = image && !image.complete && window.innerWidth < 1024
+      ? new Promise<void>(resolve => {
+        const finish = () => { image.removeEventListener('load', finish); image.removeEventListener('error', finish); resolve(); };
+        image.addEventListener('load', finish); image.addEventListener('error', finish);
+        removals.push(() => { image.removeEventListener('load', finish); image.removeEventListener('error', finish); });
+      }) : Promise.resolve();
+    void Promise.all([document.fonts.ready, imageReady]).then(initialize);
+    return () => { disposed = true; media.revert(); removals.splice(0).forEach(remove => remove()); };
   }, []);
 
   return <Button ref={skip} variant="ghost" className="build-skip" onClick={() => {
